@@ -1,5 +1,5 @@
 'user strict';
-var sql = require('./appdb.js');
+var sql = require('./db.js');
 
 //Task object constructor
 var Task = function(task){
