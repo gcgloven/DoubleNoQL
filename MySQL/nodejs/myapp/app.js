@@ -9,7 +9,19 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var testAPIRouter = require("./routes/testAPI");
 
+// test
+var routesTest = require("./app/routes/approutes")
+
+// Books Review
+var bookReviewRoutes = require("./app/routes/bookReviewRoutes")
+
 var app = express();
+
+// test
+routesTest(app);
+
+// Book Review
+bookReviewRoutes(app);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
