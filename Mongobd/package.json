@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-mongodb-rest-api",
+  "version": "1.0.0",
+  "description": "NodeJS mongoDB REST API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "rest",
+    "api"
+  ],
+  "author": "Andri",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.5"
+  }
+}
