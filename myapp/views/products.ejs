@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <table id="table" >  
+        <thead>  
+            <tr>  
+                <th>Product</th>  
+                <th>Price</th>  
+            </tr>  
+        </thead>  
+         <tbody>  
+         <% products.forEach(function (p) { %>
+            <tr>  
+                <td><%= p.product_name %></td>  
+                <td><%= p.price %></td>
+            </tr>                                   
+         <% }) %>
+         </tbody>
+    </table>   
+  </body>
+</html>
