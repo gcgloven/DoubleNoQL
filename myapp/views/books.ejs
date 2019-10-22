@@ -8,15 +8,15 @@
     <table id="table" >  
         <thead>  
             <tr>  
-                <th>Product</th>  
+                <th>Title</th>  
                 <th>Price</th>  
             </tr>  
         </thead>  
          <tbody>  
-         <% logs.forEach(function (l) { %>
+         <% books.forEach(function (b) { %>
             <tr>  
-                <td><%= l.product_name %></td>  
-                <td><%= l.price %></td>
+                <td><%= b.title %></td>  
+                <td><%= b.price %></td>
             </tr>                                   
          <% }) %>
          </tbody>

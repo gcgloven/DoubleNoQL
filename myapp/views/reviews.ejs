@@ -8,15 +8,15 @@
     <table id="table" >  
         <thead>  
             <tr>  
-                <th>Task</th>  
-                <th>Status</th>  
+                <th>Asin</th>  
+                <th>Review</th>  
             </tr>  
         </thead>  
          <tbody>  
-         <% tasks.forEach(function (t) { %>
+         <% reviews.forEach(function (r) { %>
             <tr>  
-                <td><%= t.task %></td>  
-                <td><%= t.status %></td>
+                <td><%= r.asin %></td>  
+                <td><%= r.review_text %></td>
             </tr>                                   
          <% }) %>
          </tbody>
