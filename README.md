@@ -1,15 +1,18 @@
 # DoubleNoQL
 
-This project uses React JS and Node JS to create a Book Review Website
 
+This project uses EJS (front-end), Node JS (back-end) and Epress(middleware) to create a Book Review Website
+The backend is powered by MongoDB and MySQL
 ## Data Source
 We used the book metadata from UCSD link, we have formatted into a strict file here (2.4 GB):  [Link](https://drive.google.com/file/d/1Ug0MFeDWyPA-g0c5dYmuXDrMmECd6IbT/view?usp=sharing)
 
 The Book Reviews are downloaded from Kaggle (525 MB) : [Link](https://www.kaggle.com/bharadwaj6/kindle-reviews/download)
 
+Front-End Tamplate (Free): [Link](https://themehunt.com/item/1525828-writer-free-ecommerce-book-store-template)  and [Preview](http://themehunt.com/item/1525828-writer-free-ecommerce-book-store-template/preview)
+
 
 ## Node JS Configuration
-| MongoDB  | MySQL  |
+| [MongoDB](#MongoDB-Configuration)  | [MySQL](#MySQL-Configuration)  |
 |---|---|
 | Database name: dbproj  |Database name: dbproj  
 |Books collection name: kindlemeta|Reviews table name: reviews  |  
