@@ -13,4 +13,4 @@ var bookSchema = new Schema({
   title: { type: String, Required: "Product name cannot be left blank." }
 });
 
-module.exports = mongoose2.model("Books", bookSchema, "products");
+module.exports = mongoose2.model("Books", bookSchema, "kindlemeta");
