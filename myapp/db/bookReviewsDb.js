@@ -1,17 +1,17 @@
-'user strict';
+"user strict";
 
-var mysql = require('mysql');
+var mysql = require("mysql");
 
 //local mysql db connection
 var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'grand',
-    password : '5555',
-    database : 'dbds_test'
+  host: "localhost",
+  user: "root",
+  password: "02031998",
+  database: "dbproj"
 });
 
 connection.connect(function(err) {
-    if (err) throw err;
+  if (err) throw err;
 });
 
 module.exports = connection;
