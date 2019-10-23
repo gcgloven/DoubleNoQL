@@ -103,8 +103,8 @@ GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
 ```
 For WINDOWs:
 ```sql
-CREATE USER 'root'@'%' IDENTIFIED BY 'root';
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
 ```
 
 Rename Database Name Tutorial: [Link](https://phoenixnap.com/kb/how-to-rename-a-mysql-database)
