@@ -106,6 +106,8 @@ For WINDOWS:
 ```sql
 CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
+
+ALTER USER 'username'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
 ```
 
 Rename Database Name Tutorial: [Link](https://phoenixnap.com/kb/how-to-rename-a-mysql-database)
