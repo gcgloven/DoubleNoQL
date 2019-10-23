@@ -92,7 +92,7 @@ SET review_date = STR_TO_DATE(@reviewTime, '%b %d %Y');
 #### Export Database
 `mysqldump -u username -p dbds_test > output.sql`
 
-#### Inport Database
+#### Import Database
 `mysqldump -u username -p dbds_test < output.sql`
 
 #### Extra:
