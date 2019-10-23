@@ -97,8 +97,14 @@ SET review_date = STR_TO_DATE(@reviewTime, '%b %d %Y');
 
 #### Extra:
 Change Data Base AuthMethod and Pw
-```sql
+For LINUX and MAC:
+```sql 
 GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+```
+For WINDOWs:
+```sql
+CREATE USER 'root'@'%' IDENTIFIED BY 'root';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 ```
 
 Rename Database Name Tutorial: [Link](https://phoenixnap.com/kb/how-to-rename-a-mysql-database)
