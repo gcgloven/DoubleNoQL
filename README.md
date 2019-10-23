@@ -96,7 +96,8 @@ SET review_date = STR_TO_DATE(@reviewTime, '%b %d %Y');
 `mysqldump -u username -p dbds_test < output.sql`
 
 #### Extra:
-Change Data Base AuthMethod and Pw
+Change Data Base AuthMethod and Pw /n
+
 For LINUX and MAC:
 ```sql 
 GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
