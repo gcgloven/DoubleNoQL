@@ -2,7 +2,9 @@
 "use strict";
 var mongoose = require("mongoose"),
   Product = require("./../models/bookModel"),
-  Product = mongoose.model("Books");
+  Product = mongoose.model("Books"),
+  Log = require("./../models/logModel"),
+  Log = mongoose.model("Logs");
 mongoose.connect("mongodb://localhost/dbproj", {
   useUnifiedTopology: true,
   useNewUrlParser: true
@@ -36,6 +38,22 @@ reviews.get("/reviews", function(req, res, next) {
       });
     }
   });
+
+  //post log information into mongodb database
+  var newLog = new Log({
+      asin: 'Null',
+      request: 'Book Review',
+      date: new Date() + ""
+  });
+  newLog.save(function (err) {
+      //save done
+      if (err) {
+          console.log(err);
+          status: err
+          process.exit();
+      }
+      console.log('Log Saved')
+  });
 });
 
 // some asin for testing: B000F83SZQ, B000FA64PA
@@ -55,6 +73,22 @@ reviews.get("/reviews/:asin", function(req, res, next) {
         reviews: result
       });
     }
+  });
+
+  //post log information into mongodb database
+  var newLog = new Log({
+      asin: asin,
+      request: 'Book Review',
+      date: new Date() + ""
+  });
+  newLog.save(function (err) {
+      //save done
+      if (err) {
+          console.log(err);
+          status: err
+          process.exit();
+      }
+      console.log('Log Saved')
   });
 });
 

@@ -36,6 +36,7 @@ products.get('/books/:page', function(req, res, next) {
       });
 });
 
+
 products.get('/books', function(req, res, next) {
   var perPage = 9
   var page = req.params.page || 1
