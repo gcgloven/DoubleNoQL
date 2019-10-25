@@ -71,22 +71,22 @@ CREATE TABLE reviews ( rid INT NOT NULL AUTO_INCREMENT,
 ```
 **Go Terminal -> cd to your data file's folder -> log into mysql in terminal, then:**
 ```sql
-LOAD DATA LOCAL INFILE '<FileName.csv>' 
+LOAD DATA LOCAL INFILE 'kindle_reviews.csv' 
 INTO TABLE reviews 
 FIELDS TERMINATED BY ',' 
 OPTIONALLY ENCLOSED BY '"' 
 LINES TERMINATED BY '\n' 
 IGNORE 1 ROWS (rid, 
-			   asin, 
-			   helpful, 
-			   overall, 
-			   review_text, 
-			   @reviewTime, 
-			   reviewer_id, 
-			   reviewer_name, 
-			   summary, 
-			   unix_review_time) 
-SET review_date = STR_TO_DATE(@reviewTime, '%b %d %Y');
+		asin, 
+		helpful, 
+		overall, 
+		review_text, 
+		@reviewTime, 
+		reviewer_id, 
+		reviewer_name, 
+		summary, 
+		unix_review_time) 
+SET review_date = STR_TO_DATE(@reviewTime, '%b %d, %Y');
 ```
 
 #### Export Database
