@@ -765,10 +765,23 @@ a.wish-btn:hover,
 }
 .product-wrapper {
   position: relative;
+
+  /*
+  370 x 300 for the images.
+  width = 370 - padding
+  height = 300 - padding
+  padding = any suitable num.
+  */
+
+  width: 259px;
+  height: 210px;
+ padding: 25px;
+
 }
 .single-banner-image-wrapper {
   display: block;
   position: relative;
+  
 }
 .single-banner-image-wrapper::before {
   background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
@@ -779,6 +792,13 @@ a.wish-btn:hover,
   width: 100%;
   opacity: 0;
 }
+
+.imagecontainer {
+  width:  50%; /*or 70%, or what you want*/
+  height: 50%; /*or 70%, or what you want*/
+  position: center;
+}
+
 .single-banner:hover .product-description,
 .single-banner:hover .single-banner-image-wrapper::before {
   opacity: 1;
