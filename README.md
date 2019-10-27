@@ -38,6 +38,7 @@ Front-End Tamplate (Free): [Link](https://themehunt.com/item/1525828-writer-free
 
 ### MongoDB
 **Step 1 – Import the public key used by the package management system**
+
 `sudo apt-get install gnupg`
 
 `$ wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -`
