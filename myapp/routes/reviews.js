@@ -5,9 +5,9 @@ var mongoose = require("mongoose"),
   Product = mongoose.model("Books"),
   Log = require("./../models/logModel"),
   Log = mongoose.model("Logs");
-mongoose.connect("mongodb://localhost/dbproj", {
-  useUnifiedTopology: true,
-  useNewUrlParser: true
+  mongoose.connect("mongodb://localhost/dbproj", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
 });
 
 mongoose.connection.on("error", function(error) {
@@ -55,8 +55,6 @@ reviews.get("/reviews", function(req, res, next) {
       console.log('Log Saved')
   });
 });
-
-// some asin for testing: B000F83SZQ, B000FA64PA
 
 reviews.get("/reviews/:asin", function(req, res, next) {
   var asin = req.params.asin;
