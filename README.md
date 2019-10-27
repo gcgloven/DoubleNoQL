@@ -1,3 +1,4 @@
+
 # DoubleNoQL
 
 
@@ -10,6 +11,25 @@ The Book Reviews are downloaded from Kaggle (525 MB) : [Link](https://www.kaggle
 
 Front-End Tamplate (Free): [Link](https://themehunt.com/item/1525828-writer-free-ecommerce-book-store-template)  and [Preview](http://themehunt.com/item/1525828-writer-free-ecommerce-book-store-template/preview)
 
+## Installation
+### Node
+**Step 1 – Add Node.js PPA**
+`$ sudo apt-get install curl`
+`$ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -`
+
+**Step 2 – Install Node.js on Ubuntu**
+`$ sudo apt-get install nodejs`
+
+**Step 3 – Check Node.js and NPM Version**
+`$ node -v`
+`$ npm -v`
+
+### Git
+**Step 1 – Install Git**
+`$ apt-get install git-core`
+
+**Step 2 – Confirm Git the installation**
+`$ git --version`
 
 ## Node JS Configuration
 | [MongoDB](#MongoDB-Configuration)  | [MySQL](#MySQL-Configuration)  |
@@ -91,10 +111,10 @@ SET review_date = STR_TO_DATE(@reviewTime, '%b %d, %Y');
 ```
 
 #### Export Database
-`mysqldump -u username -p dbds_test > output.sql`
+`$ mysqldump -u username -p dbds_test > output.sql`
 
 #### Import Database
-`mysqldump -u username -p dbds_test < output.sql`
+`$ mysqldump -u username -p dbds_test < output.sql`
 
 #### Extra:
 Change Data Base AuthMethod and Pw
