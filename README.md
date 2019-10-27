@@ -15,7 +15,8 @@ Front-End Tamplate (Free): [Link](https://themehunt.com/item/1525828-writer-free
 | [MongoDB](#MongoDB-Configuration)  | [MySQL](#MySQL-Configuration)  |
 |---|---|
 | Database name: dbproj  |Database name: dbproj  
-|Books collection name: kindlemeta|Reviews table name: reviews  |  
+|Books collection name: kindlemeta|Reviews table name: reviews  |
+|Logs collection name: log|  |
 |Username and password: None  |   Username: dbds  Password: dbds|
 
 ### Node  MySQL
