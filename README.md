@@ -16,10 +16,9 @@ Front-End Tamplate (Free): [Link](https://themehunt.com/item/1525828-writer-free
 ### Node
 **Step 1 – Add Node.js PPA**
 
-`
-$ sudo apt-get install curl
-$ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-`
+`$ sudo apt-get install curl`
+
+`$ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -`
 
 **Step 2 – Install Node.js on Ubuntu**
 
