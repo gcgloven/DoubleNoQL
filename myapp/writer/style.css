@@ -488,6 +488,9 @@ a.wish-btn:hover,
   position: absolute;
   right: 15px;
   top: 18px;
+  color: #FFFFFF;
+  background-color: #000000;
+  padding: 2px;
 }
 .price span {
   font-size: 16px;
@@ -773,14 +776,15 @@ a.wish-btn:hover,
   padding = any suitable num.
   */
 
-  width: 259px;
+  width: 260px;
   height: 210px;
- padding: 25px;
+  padding: 0px;
+  /*background-color: black;*/
 
 }
 .single-banner-image-wrapper {
   display: block;
-  position: relative;
+  position: center;
   
 }
 .single-banner-image-wrapper::before {
@@ -794,9 +798,11 @@ a.wish-btn:hover,
 }
 
 .imagecontainer {
-  width:  50%; /*or 70%, or what you want*/
-  height: 50%; /*or 70%, or what you want*/
-  position: center;
+  width:  auto; /*or 70%, or what you want*/
+  height: 210px; /*or 70%, or what you want*/
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .single-banner:hover .product-description,
