@@ -44,16 +44,21 @@ Front-End Tamplate (Free): [Link](https://themehunt.com/item/1525828-writer-free
 `$ wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -`
 
 **Step 2 – Create a list file for MongoDB**
+
 *Note: The following instruction is for Ubuntu 18.04 (Bionic)*
+
 `echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list`
 
 **Step 3 – Reload local package database**
+
 `sudo apt-get update`
 
 **Step 4 – Install the MongoDB packages**
+
 `sudo apt-get install -y mongodb-org`
 
 **Step 5 – Start MongoDB**
+
 `sudo service mongod start`
 
 ## Node JS Configuration
