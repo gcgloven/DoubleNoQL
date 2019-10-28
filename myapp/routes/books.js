@@ -3,7 +3,7 @@ var mongoose = require("mongoose"),
   Product = require("./../models/bookModel"),
   Product = mongoose.model("Books");
 
-mongoose.connect("mongodb://localhost/dbproj", {
+mongoose.connect("mongodb://ec2-52-221-249-173.ap-southeast-1.compute.amazonaws.com/dbproj", {
   useUnifiedTopology: true,
   useNewUrlParser: true
 });

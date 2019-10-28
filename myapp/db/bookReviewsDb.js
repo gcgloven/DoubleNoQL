@@ -4,9 +4,9 @@ var mysql = require("mysql");
 
 //local mysql db connection
 var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Z-31^100",
+  host: "ec2-54-169-138-245.ap-southeast-1.compute.amazonaws.com",
+  user: "dbds",
+  password: "dbds",
   database: "dbproj"
 });
 
