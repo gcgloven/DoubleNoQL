@@ -152,15 +152,17 @@ Change Data Base AuthMethod and Pw
 
 For LINUX and MAC:
 ```sql 
-GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
 ```
 For WINDOWS:
 ```sql
 CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
 
 ALTER USER 'username'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
 ```
+*Note: change local host to a specific IP address to gain access to specific system or change to %  to grant access to any system*
+
 
 Rename Database Name Tutorial: [Link](https://phoenixnap.com/kb/how-to-rename-a-mysql-database)
 
