@@ -152,12 +152,12 @@ Change Data Base AuthMethod and Pw
 
 For LINUX and MAC:
 ```sql 
-GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' IDENTIFIED BY 'password';
 ```
 For WINDOWS:
 ```sql
 CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' WITH GRANT OPTION;
 
 ALTER USER 'username'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
 ```
