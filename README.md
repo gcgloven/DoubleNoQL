@@ -1,3 +1,4 @@
+
 # DoubleNoQL
 
 This project uses EJS (front-end), Node JS (back-end) and Epress(middleware) to create a Book Review Website
@@ -60,6 +61,13 @@ Front-End Tamplate (Free): [Link](https://themehunt.com/item/1525828-writer-free
 **Step 5 – Start MongoDB**
 
 `sudo service mongod start`
+
+### MySQL
+**Step 1 – Install MySQL**
+
+`sudo apt-get update`
+
+`sudo apt-get install mysql-server`
 
 ## Node JS Configuration
 | [MongoDB](#MongoDB-Configuration)  | [MySQL](#MySQL-Configuration)  |
