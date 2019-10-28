@@ -161,7 +161,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
 
 ALTER USER 'username'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
 ```
-*Note: change local host to a specific IP address to gain access to specific system or change to %  to grant access to any system*
+*Note: change localhost to a specific IP address to gain access to specific system or change to %  to grant access to any system*
 
 
 Rename Database Name Tutorial: [Link](https://phoenixnap.com/kb/how-to-rename-a-mysql-database)
