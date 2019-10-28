@@ -475,10 +475,14 @@
                                             <div class="single-banner">
                                               <div class="product-wrapper">
                                                 <a href="/reviews/<%= b.asin %>" class="single-banner-image-wrapper">
-                                                  <img alt="" src="<%= b.imUrl %>">
-                                                  <div class="price"><span>$</span><%= b.price %></div>
+                                                  <img class = "imagecontainer" alt="" src="<%= b.imUrl %>">
+                                                  <div class = "price">
+                                                      <%if (b.price > 0) { 
+                                                          %>$ <%= b.price %> <% }
+                                                      %>
+                                                  </div>
                                                 </a>
-                                                <div class="product-description">
+                                                <!--<div class="product-description">
                                                   <div class="functional-buttons">
                                                     <a href="#" title="Add to Cart">
                                                       <i class="fa fa-shopping-cart"></i>
@@ -490,11 +494,15 @@
                                                       <i class="fa fa-compress"></i>
                                                     </a>
                                                   </div>
-                                                </div>
+                                                </div>!-->
                                               </div>
                                               <div class="banner-bottom text-center">
                                                 <div class="banner-bottom-title">
-                                                  <a href="#"><%= b.title %></a>
+                                                    <%
+                                                    if (b.title != null) { %> <a href="#"><%= b.title %></a> <% }
+                                                    else {%> <a>[MISSING TITLE]</a> <%}
+                                                    %>
+                                                  
                                                 </div>
                                                 <div class="rating-icon">
                                                   <i class="fa fa-star icolor"></i>

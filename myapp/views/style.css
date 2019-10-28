@@ -714,7 +714,8 @@ body {
   */
 
   width: 260px;
-  height: 220px;
+  height: 210px;
+  padding: 0px;
   /*background-color: black;*/
 
 }
