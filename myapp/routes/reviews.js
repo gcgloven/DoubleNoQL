@@ -24,7 +24,7 @@ var express = require("express");
 var reviews = express.Router();
 
 /* GET home page. */
-reviews.get("/reviews", function(req, res, next) {
+reviews.get("/", function(req, res, next) {
   connection.query("Select * from reviews limit 10", function(err, result) {
     if (err) {
       console.log("error: ", err);
@@ -55,7 +55,7 @@ reviews.get("/reviews", function(req, res, next) {
   });
 });
 
-reviews.get("/reviews/:asin", async function(req, res, next) {
+reviews.get("/:asin", async function(req, res, next) {
   var asin = req.params.asin;
   var q = "Select * from reviews where asin = '" + asin + "'";
   var book = await getBookInfo(asin)
@@ -90,8 +90,8 @@ reviews.get("/reviews/:asin", async function(req, res, next) {
   });
 });
 
-reviews.post('/reviews/new', function(req, res) {
+reviews.post('/new', function(req, res) {
   console.log('i got a request', req.body)
-  res.send('  reviews')
+  res.send('reviews')
 })
 module.exports = reviews;

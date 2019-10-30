@@ -15,7 +15,7 @@ mongoose.connection.on("error", function(error) {
 var express = require("express");
 var products = express.Router();
 
-products.get('/books/:page', function(req, res, next) {
+products.get('/:page', function(req, res, next) {
   var perPage = 9
   var page = req.params.page || 1
 
@@ -37,7 +37,7 @@ products.get('/books/:page', function(req, res, next) {
 });
 
 
-products.get('/books', function(req, res, next) {
+products.get('/', function(req, res, next) {
   var perPage = 9
   var page = req.params.page || 1
 

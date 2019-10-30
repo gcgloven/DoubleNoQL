@@ -15,7 +15,7 @@ var express = require("express");
 var products = express.Router();
 
 /* GET home page. */
-products.get("/products", function(req, res, next) {
+products.get("/", function(req, res, next) {
   Product.find({}, function(err, result) {
     if (err) {
       console.log("error: ", err);

@@ -22,10 +22,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use("/", indexRouter);
-app.use("/", usersRouter);
-app.use("/", reviewsRouter);
-app.use("/", booksRouter);
-app.use("/", productsRouter);
+app.use("/users", usersRouter);
+app.use("/reviews", reviewsRouter);
+app.use("/books", booksRouter);
+app.use("/products", productsRouter);
+
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(__dirname + "/views"));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(__dirname + "/views"));
