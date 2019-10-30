@@ -20,14 +20,15 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(__dirname + "/views"));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/", usersRouter);
 app.use("/", reviewsRouter);
 app.use("/", booksRouter);
 app.use("/", productsRouter);
+
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(__dirname + "/views"));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

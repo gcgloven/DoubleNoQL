@@ -21,6 +21,7 @@ function getBookTitle(asin) {
 var connection = require("./../db/bookReviewsDb");
 
 var express = require("express");
+
 var reviews = express.Router();
 
 /* GET home page. */
@@ -89,4 +90,7 @@ reviews.get("/reviews/:asin", function(req, res, next) {
   });
 });
 
+reviews.post('/reviews/new', function(req, res) {
+  console.log('i got a request', req.body)
+})
 module.exports = reviews;
