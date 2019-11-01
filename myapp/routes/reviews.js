@@ -1,7 +1,6 @@
 "user strict";
 var mongoose = require("mongoose"),
-  Product = require("./../models/bookModel"),
-  Product = mongoose.model("Books"),
+  Book = require("./../models/bookModel"),
   Log = require("./../models/logModel"),
   Log = mongoose.model("Logs");
   mongoose.connect("mongodb://ec2-52-221-249-173.ap-southeast-1.compute.amazonaws.com/dbproj", {
@@ -13,9 +12,9 @@ mongoose.connection.on("error", function(error) {
   console.log("Connection error: ", error);
 });
 
-function getBookTitle(asin) {
-  var bookTitle = Product.find({ asin: asin });
-  return bookTitle.title;
+function getBookInfo(asin) {
+  var book = Book.findOne({ asin: asin }).lean().exec();
+  return book;
 }
 
 var connection = require("./../db/bookReviewsDb");
@@ -31,7 +30,7 @@ reviews.get("/reviews", function(req, res, next) {
       console.log("error: ", err);
       res.send(err);
     } else {
-      console.log("reviews : ", result);
+      // console.log("reviews : ", result);
       res.render("reviews", {
         title: "List of all book reviews",
         reviews: result
@@ -56,10 +55,10 @@ reviews.get("/reviews", function(req, res, next) {
   });
 });
 
-reviews.get("/reviews/:asin", function(req, res, next) {
+reviews.get("/reviews/:asin", async function(req, res, next) {
   var asin = req.params.asin;
   var q = "Select * from reviews where asin = '" + asin + "'";
-
+  var book = await getBookInfo(asin)
   connection.query(q, function(err, result) {
     if (err) {
       console.log("error: ", err);
@@ -67,8 +66,9 @@ reviews.get("/reviews/:asin", function(req, res, next) {
     } else {
       console.log("reviews : ", result);
       res.render("reviews", {
-        title: getBookTitle(req.params.asin),
-        reviews: result
+        title: book.title,
+        reviews: result,
+        asin: asin
       });
     }
   });
@@ -92,5 +92,6 @@ reviews.get("/reviews/:asin", function(req, res, next) {
 
 reviews.post('/reviews/new', function(req, res) {
   console.log('i got a request', req.body)
+  res.send('  reviews')
 })
 module.exports = reviews;
