@@ -29,11 +29,46 @@ reviews.get("/reviews", function(req, res, next) {
     if (err) {
       console.log("error: ", err);
       res.send(err);
+
+      //post log information into mongodb database
+      var newLog = new Log({
+          asin: asin,
+          request: 'Book Review',
+          date: new Date() + "",
+          status: 'fail'
+      });
+      newLog.save(function (err) {
+          //save done
+          if (err) {
+              console.log(err);
+              status: err
+              process.exit();
+          }
+          console.log('Log Saved')
+      });
+
     } else {
       console.log("reviews : ", result);
       res.render("reviews", {
         title: "List of all book reviews",
         reviews: result
+      });
+
+      //post log information into mongodb database
+      var newLog = new Log({
+          asin: asin,
+          request: 'Book Review',
+          date: new Date() + "",
+          status: 'success'
+      });
+      newLog.save(function (err) {
+          //save done
+          if (err) {
+              console.log(err);
+              status: err
+              process.exit();
+          }
+          console.log('Log Saved')
       });
     }
   });
@@ -63,29 +98,48 @@ reviews.get("/reviews/:asin", function(req, res, next) {
     if (err) {
       console.log("error: ", err);
       res.send(err);
+
+      //post log information into mongodb database
+      var newLog = new Log({
+          asin: asin,
+          request: 'Book Review',
+          date: new Date() + "",
+          status: 'fail'
+      });
+      newLog.save(function (err) {
+          //save done
+          if (err) {
+              console.log(err);
+              status: err
+              process.exit();
+          }
+          console.log('Log Saved')
+      });
+
     } else {
       console.log("reviews : ", result);
       res.render("reviews", {
         title: getBookTitle(req.params.asin),
         reviews: result
       });
-    }
-  });
 
-  //post log information into mongodb database
-  var newLog = new Log({
-      asin: asin,
-      request: 'Book Review',
-      date: new Date() + ""
-  });
-  newLog.save(function (err) {
-      //save done
-      if (err) {
-          console.log(err);
-          status: err
-          process.exit();
-      }
-      console.log('Log Saved')
+      //post log information into mongodb database
+      var newLog = new Log({
+          asin: asin,
+          request: 'Book Review',
+          date: new Date() + "",
+          status: 'success'
+      });
+      newLog.save(function (err) {
+          //save done
+          if (err) {
+              console.log(err);
+              status: err
+              process.exit();
+          }
+          console.log('Log Saved')
+      });
+    }
   });
 });
 

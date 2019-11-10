@@ -4,7 +4,8 @@ var Schema = mongoose2.Schema;
 var bookSchema = new Schema({
   asin: {type: String},
   request: { type: String, Required: "Product name cannot be left blank." },
-  date: { type: Date}
+  date: { type: Date},
+  status: {type: String}
 
 });
 
