@@ -10,7 +10,6 @@ var mongoose = require("mongoose"),
 // mongoose.connection.on('error',function(error){
 //     console.log('Connection error: ', error);
 //   });
-
 var express = require("express");
 var products = express.Router();
 
