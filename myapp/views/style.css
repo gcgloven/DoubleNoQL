@@ -2510,3 +2510,12 @@ h3.widget-title-modal {
 #scrollUp i {
   line-height: 40px;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 15px; 
+}
