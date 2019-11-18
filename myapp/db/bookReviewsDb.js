@@ -6,8 +6,8 @@ var mysql = require("mysql");
 
 var connection = mysql.createConnection({
   host: "ec2-54-169-138-245.ap-southeast-1.compute.amazonaws.com",
-  user: "root",
-  password: "root",
+  user: "dbds",
+  password: "dbds",
   database: "dbproj"
 });
 
