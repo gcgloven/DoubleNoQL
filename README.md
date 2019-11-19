@@ -178,3 +178,10 @@ Export
 
 Import (Alternative)
 `$ mongorestore -d new_db_name mongodump/old_db_name`
+
+## Hadoop + EC2 Setup
+video:
+https://www.youtube.com/watch?v=XkDhf1pwPtA
+
+script
+https://klasserom.azurewebsites.net/Lessons/Binder/1960
