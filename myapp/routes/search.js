@@ -15,21 +15,21 @@ mongoose.connection.on("error", function(error) {
 var express = require("express");
 var search = express.Router();
 //var bodyParser = require('body-parser');
-search.get('/search', function(req, res){
-    res.render('search');
+search.get('/', function(req, res){
+    res.render('index');
     console.log("ACCESING Default KEY");
     console.log(req.body.search_name);
     console.log(req.body.submit_name);
   });
   
 
-search.post('/search', function(req, res, next) {
+search.post('/', function(req, res, next) {
     var perPage = 9
     var page = req.params.page || 1
     console.log("ACCESING SEARCH KEY"
     )
 
-    var search_key = req.body.search_name
+    var search_key = req.body.index_search
     console.log("SEARCH KEY",search_key)
     console.log(Product.find({ $text: { $search: search_key } }))
     Product
