@@ -1,46 +1,49 @@
-
-
-
 <html>  
+  <head>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+  <div class = "container">
     <form method="post">
-    <label for="addnewbook">Enter asinID: </label>
-     <textarea class="text" cols="80" rows ="20" name="new_asin_id"></textarea>
+    <label for="addnewbook" class="questions">Enter asinID: </label>
+     <textarea class="text" cols="30" rows ="1" name="new_asin_id"></textarea>
      <br/>
 
-     <label for="addnewbook">Enter Book Name: </label>
-     <textarea class="text" cols="80" rows ="20" name="new_title"></textarea>
+     <label for="addnewbook" class="questions">Enter Book Name: </label>
+     <textarea class="text" cols="50" rows ="1" name="new_title"></textarea>
      <br/>
 
-     <label for="addnewbook">Enter Price of Book: </label>
-     <textarea class="text" cols="80" rows ="20" name="new_price"></textarea>
+     <label for="addnewbook" class="questions">Enter Price of Book: </label>
+     <textarea class="text" cols="10" rows ="1" name="new_price"></textarea>
      <br/>
    
-     <!-- <label for="addnewbook">Upload Image of new book </label>
+     <!-- 
+    There's a problem with image upload; keep it to "textbox" for upload image first.
+
+     <label for="addnewbook">Upload Image of new book </label>
      <input type="file" accept="image/*" name="photo" >
      <br/> -->
      
-     <label for="addnewbook">Upload Image of new book </label>
-     <textarea class="text" cols="80" rows ="20" name="photo"></textarea>
+     <label for="addnewbook" class="questions">Upload Image of new book: </label>
+     <textarea class="text" cols="20" rows ="1" name="photo"></textarea>
      <br/>
 
     
-     <label for="addnewbook">Enter Book Summary: </label>
-     <textarea class="text" cols="80" rows ="20" name="new_description"></textarea>
+     <label for="addnewbook" class="questions">Enter Book Summary: </label>
+     <textarea class="text" cols="60" rows ="5" name="new_description"></textarea>
      <br/>
 
-     <label for="addnewbook">Enter Book Category: </label>
-     <textarea class="text" cols="80" rows ="20" name="new_categories"></textarea>
-     <br/>
-     
-     <label for="addnewbook">Enter Book Brand: </label>
-     <textarea class="text" cols="80" rows ="20" name="new_brand"></textarea>
+     <label for="addnewbook" class="questions">Enter Book Category: </label>
+     <textarea class="text" cols="20" rows ="1" name="new_categories"></textarea>
      <br/>
      
+     <label for="addnewbook" class="questions">Enter Book Brand: </label>
+     <textarea class="text" cols="20" rows ="1" name="new_brand"></textarea>
+     <br/>
 
-
-
-     <input type="submit" value="Search This" class="submitButton" name="submit_name">
-  </form>  
-  
-  </body>  
+    <hr></hr>
+     <input type="submit" value="Submit" class="submitButton" name="submit_name">
+    </form>  
+  </div>  
+  </body>
   </html>
