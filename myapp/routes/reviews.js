@@ -7,7 +7,8 @@ var mongoose = require("mongoose"),
     useUnifiedTopology: true,
     useNewUrlParser: true
 });
-
+var book='';
+var qresult=null;
 mongoose.connection.on("error", function(error) {
   console.log("Connection error: ", error);
 });
@@ -58,13 +59,14 @@ reviews.get("/", function(req, res, next) {
 reviews.get("/:asin", async function(req, res, next) {
   var asin = req.params.asin;
   var q = "Select * from reviews where asin = '" + asin + "'";
-  var book = await getBookInfo(asin)
+  book = await getBookInfo(asin)
   connection.query(q, function(err, result) {
     if (err) {
       console.log("error: ", err);
       res.send(err);
     } else {
-      console.log("reviews : ", result);
+      console.log("reviews :", result);
+      qresult=result;
       res.render("reviews", {
         title: book.title,
         reviews: result,
@@ -90,8 +92,28 @@ reviews.get("/:asin", async function(req, res, next) {
   });
 });
 
-reviews.post('/new', function(req, res) {
+reviews.post('/', function(req, res) {
   console.log('i got a request', req.body)
-  res.send('reviews')
+  var today = new Date();
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  console.log(date);
+  var unix=Math.round((new Date()).getTime() / 1000);
+  //body=JSON.parse(JSON.stringify(res.body));
+  console.log(req.body.rating)
+  var q = `insert into reviews(asin,helpful,overall,review_text,review_date,reviewer_id,reviewer_name,summary,unix_review_time) values(\'${req.body.bookasin}\',\'[0, 0]\',${req.body.rating},\'${req.body.review}\',\'${date}\',\'${req.body.userID}\',\'${req.body.username}\',\'${req.body.summary}\',${unix})`;
+  console.log(q);
+  connection.query(q, function(err, result) {
+    if (err) {
+      console.log("error: ", err);
+      res.send(err);
+    } else {
+      asin=req.body.asin
+      res.render("reviews", {
+        title: book.title,
+        reviews: qresult,
+        asin: asin
+      });
+    }
+  });
 })
 module.exports = reviews;

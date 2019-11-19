@@ -27,8 +27,6 @@ app.use("/reviews", reviewsRouter);
 app.use("/books", booksRouter);
 app.use("/products", productsRouter);
 
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(__dirname + "/views"));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(__dirname + "/views"));
