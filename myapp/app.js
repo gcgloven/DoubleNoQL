@@ -10,7 +10,7 @@ var reviewsRouter = require("./routes/reviews");
 var booksRouter = require("./routes/books");
 var productsRouter = require("./routes/products");
 var searchRouter = require("./routes/search");
-
+var addnewbookRouter = require("./routes/addnewbook");
 var app = express();
 
 // view engine setup
@@ -30,7 +30,7 @@ app.use("/", reviewsRouter);
 app.use("/", booksRouter);
 app.use("/", productsRouter);
 app.use("/",searchRouter);
-
+app.use("/",addnewbookRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
