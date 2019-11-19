@@ -477,9 +477,10 @@
                                                 <a href="/reviews/<%= b.asin %>" class="single-banner-image-wrapper">
                                                   <img class = "imagecontainer" alt="" src="<%= b.imUrl %>">
                                                   <div class = "price">
-                                                      <%if (b.price > 0) { 
-                                                          %>$ <%= b.price %> <% }
-                                                      %>
+                                                      <%if (b.price > 0) {%>
+                                                         $ <%= b.price %>
+                                                         <%} else {%>
+                                                            $ -<% } %>
                                                   </div>
                                                 </a>
                                                 <!--<div class="product-description">
