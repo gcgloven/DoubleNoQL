@@ -295,7 +295,7 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="one">
                                     <a class="venobox" href="/img/single-product/bg-1.jpg" data-gall="gallery" title="">
-                                        <img src="/img/single-product/bg-1.jpg" alt="">
+                                        <img src="<%= mongo.imUrl %>" alt="">
                                     </a>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="two">
@@ -326,13 +326,16 @@
                                 <i class="fa fa-star icolor"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <h2><%= title %></h2>
+                            <h2><%if (mongo.title) { 
+                                %> <%= mongo.title %> <% }
+                            %>
+                        <%= mongo.asin %></h2>
                             <!--<div class="availability">
                                 <span>In stock</span>
                             </div>-->
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
                             <div class="single-product-price">
-                                <h2>$49.66</h2>
+                                <h2>$ <%= mongo.price %></h2>
                             </div>
                             <div class="product-attributes clearfix">
                                 <span class="pull-left" id="quantity-wanted-p">
@@ -355,7 +358,8 @@
                             </div>
                             <div class="single-product-categories">
                                <label>Categories:</label>
-                                <span>e-book, biological, business</span>
+                                <span>
+                            <%= mongo.categories %></span>
                             </div>
                             <div class="social-share">
                                 <label>Share: </label>
@@ -387,7 +391,7 @@
                             <div class="tab-content review">
                                 <div role="tabpanel" class="tab-pane active" id="more-info">
                                   <table>
-                                    <%= title %>
+                                    mongo data: <%= mongo %>
                                     <thead>
                                         <tr>
                                             <th>Reviewer</th>
