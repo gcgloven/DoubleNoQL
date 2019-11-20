@@ -114,7 +114,8 @@ router.post('/addbook', function(req, res, next) {
 
 router.get('/addbook', function(req, res){
     res.render('addbook');
-    console.log("ACCESING add book page");
+    console.log("ACCESSING add book page");
   });
 
 module.exports = router;
+ 
