@@ -185,3 +185,6 @@ https://www.youtube.com/watch?v=XkDhf1pwPtA
 
 script
 https://klasserom.azurewebsites.net/Lessons/Binder/1960
+
+Change Owner
+sudo chown <owner> <path>
