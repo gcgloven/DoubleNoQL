@@ -124,9 +124,15 @@ reviews.get("/reviews/:asin", function(req, res, next) {
       let mongoResult = await getData({ asin: asin });
       let arrValues = Object.values(mongoResult);
       console.log("result: " + arrValues[0]);
+      let related = await getData({
+        asin: arrValues[0].related.also_bought
+      });
+      let relValues = Object.values(related);
+
       res.render("reviews", {
         mongo: arrValues[0],
-        reviews: result
+        reviews: result,
+        rel: relValues
       });
 
       //post log information into mongodb database
