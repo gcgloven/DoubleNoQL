@@ -187,4 +187,4 @@ script
 https://klasserom.azurewebsites.net/Lessons/Binder/1960
 
 Change Owner
-'sudo chown <owner> <path>'
+'$ sudo chown <owner> <path>'
