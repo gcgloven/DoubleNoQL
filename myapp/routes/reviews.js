@@ -18,6 +18,7 @@ mongoose.connection.on("error", function(error) {
   console.log("Connection error: ", error);
 });
 
+
 function getData(q) {
   var query = Product.find(q, " -_id", function(err) {
     if (err) throw err;
@@ -123,6 +124,7 @@ reviews.get("/:asin", function(req, res, next) {
       });
     } else {
       console.log("reviews : ", result);
+      qresult=result;
       let mongoResult = await getData({ asin: asin });
       let arrValues = Object.values(mongoResult);
       console.log("result: " + arrValues[0]);
