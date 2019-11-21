@@ -52,7 +52,7 @@ search.post('/', function(req, res, next) {
 });
 
 
-/*search.post('/search', function(req, res, next) {
+/*search.post('/', function(req, res, next) {
     var perPage = 9
     var page = req.params.page || 1
     console.log("ACCESING SEARCH KEY"
