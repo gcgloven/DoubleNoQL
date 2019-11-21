@@ -13,7 +13,7 @@ mongoose.connect(
 );
 
 var book='';
-var qresult=null;
+var params=null;
 mongoose.connection.on("error", function(error) {
   console.log("Connection error: ", error);
 });
@@ -124,7 +124,6 @@ reviews.get("/:asin", function(req, res, next) {
       });
     } else {
       console.log("reviews : ", result);
-      qresult=result;
       let mongoResult = await getData({ asin: asin });
       let arrValues = Object.values(mongoResult);
       console.log("result: " + arrValues[0]);
@@ -132,12 +131,13 @@ reviews.get("/:asin", function(req, res, next) {
         asin: arrValues[0].related.also_bought
       });
       let relValues = Object.values(related);
-
-      res.render("reviews", {
+      params={
         mongo: arrValues[0],
         reviews: result,
-        rel: relValues
-      });
+        rel: relValues,
+        asin:asin
+      }
+      res.render("reviews", params);
 
       //post log information into mongodb database
       var newLog = new Log({
@@ -174,11 +174,7 @@ reviews.post('/', function(req, res) {
       res.send(err);
     } else {
       asin=req.body.asin
-      res.render("reviews", {
-        title: book.title,
-        reviews: qresult,
-        asin: asin
-      });
+      res.render("reviews", params);
     }
   });
 })
