@@ -21,7 +21,7 @@ var bodyParser = require("body-parser");
 products.use(bodyParser.json());
 products.use(bodyParser.urlencoded({ extended: true }));
 
-products.get("/books/:page", function(req, res, next) {
+products.get("/:page", function(req, res, next) {
   var perPage = 9;
   var page = req.params.page || 1;
   // if (req.query.sort == "price") {
@@ -51,7 +51,7 @@ products.get("/books/:page", function(req, res, next) {
     });
 });
 
-products.get("/books", function(req, res, next) {
+products.get("/", function(req, res, next) {
   var perPage = 9;
   var page = req.params.page || 1;
 

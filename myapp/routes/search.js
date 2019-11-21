@@ -64,7 +64,7 @@ search.post('/', function(req, res, next) {
     
 });*/
 
-search.get('/search', function(req, res){
+search.get('/', function(req, res){
     res.render('search');
     console.log("ACCESING Default KEY");
     console.log(req.body.search_name);

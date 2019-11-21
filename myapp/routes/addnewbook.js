@@ -21,7 +21,7 @@ mongoose.connection.on("error", function(error) {
 var express = require("express");
 var router = express.Router();
 //var bodyParser = require('body-parser');
-router.post('/addbook', function(req, res,next){
+router.post('/', function(req, res,next){
     //res.render('addbook');
     console.log("Load_MY_DATA");
     //const { new_asin_id, new_title, new_price, photo } = req.body
@@ -82,7 +82,7 @@ router.post('/addbook', function(req, res,next){
         }});
       });
 /*
-router.post('/addbook', function(req, res, next) {
+router.post('/', function(req, res, next) {
     var perPage = 9
     var page = req.params.page || 1
     console.log("ACCESING SEARCH KEY"
@@ -112,7 +112,7 @@ router.post('/addbook', function(req, res, next) {
 */
 
 
-router.get('/addbook', function(req, res){
+router.get('/', function(req, res){
     res.render('addbook');
     console.log("ACCESING add book page");
   });

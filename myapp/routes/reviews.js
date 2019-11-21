@@ -29,7 +29,7 @@ var express = require("express");
 var reviews = express.Router();
 
 /* GET home page. */
-reviews.get("/reviews", function(req, res, next) {
+reviews.get("/", function(req, res, next) {
   connection.query("Select * from reviews limit 10", function(err, result) {
     if (err) {
       console.log("error: ", err);
@@ -94,7 +94,7 @@ reviews.get("/reviews", function(req, res, next) {
   });
 });
 
-reviews.get("/reviews/:asin", function(req, res, next) {
+reviews.get("/:asin", function(req, res, next) {
   var asin = req.params.asin;
   var q = "Select * from reviews where asin = '" + asin + "'";
 

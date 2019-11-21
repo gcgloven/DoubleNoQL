@@ -22,13 +22,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// app.use("/", indexRouter);
-// app.use("/users", usersRouter);
-// app.use("/", reviewsRouter);
-// app.use("/", booksRouter);
-// app.use("/", productsRouter);
-// app.use("/",searchRouter);
-// app.use("/",addnewbookRouter);
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
+app.use("/reviews", reviewsRouter);
+app.use("/books", booksRouter);
+app.use("/products", productsRouter);
+app.use("/search",searchRouter);
+app.use("/addbook",addnewbookRouter);
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(__dirname + "/views"));
