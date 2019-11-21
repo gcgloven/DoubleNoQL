@@ -12,6 +12,8 @@ mongoose.connect(
   }
 );
 
+var book='';
+var qresult=null;
 mongoose.connection.on("error", function(error) {
   console.log("Connection error: ", error);
 });
@@ -154,5 +156,28 @@ reviews.get("/:asin", function(req, res, next) {
     }
   });
 });
-
+reviews.post('/', function(req, res) {
+  console.log('i got a request', req.body)
+  var today = new Date();
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  console.log(date);
+  var unix=Math.round((new Date()).getTime() / 1000);
+  //body=JSON.parse(JSON.stringify(res.body));
+  console.log(req.body.rating)
+  var q = `insert into reviews(asin,helpful,overall,review_text,review_date,reviewer_id,reviewer_name,summary,unix_review_time) values(\'${req.body.bookasin}\',\'[0, 0]\',${req.body.rating},\'${req.body.review}\',\'${date}\',\'${req.body.userID}\',\'${req.body.username}\',\'${req.body.summary}\',${unix})`;
+  console.log(q);
+  connection.query(q, function(err, result) {
+    if (err) {
+      console.log("error: ", err);
+      res.send(err);
+    } else {
+      asin=req.body.asin
+      res.render("reviews", {
+        title: book.title,
+        reviews: qresult,
+        asin: asin
+      });
+    }
+  });
+})
 module.exports = reviews;
