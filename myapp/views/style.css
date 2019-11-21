@@ -736,7 +736,7 @@ body {
 
 .imagecontainer {
   width:  auto; /*or 70%, or what you want*/
-  height: 210px; /*or 70%, or what you want*/
+  height: 200px; /*or 70%, or what you want*/
   display: block;
   margin-left: auto;
   margin-right: auto;

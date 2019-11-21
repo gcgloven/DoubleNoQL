@@ -452,17 +452,15 @@
                             <div class="single-banner">
                                 <div class="product-wrapper">
                                     <a href="/reviews/<%= r.asin %>" class="single-banner-image-wrapper">
-                                        <img alt="" src="<%= r.imUrl %>">
-                                        <div class="<%= r.price %>"><span>$</span>160</div>
-                                        <div class="rating-icon">
-                                            <i class="fa fa-star icolor"></i>
-                                            <i class="fa fa-star icolor"></i>
-                                            <i class="fa fa-star icolor"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
+                                        <img class = "imagecontainer" alt="" src="<%= r.imUrl %>">
+                                        <div class = "price">
+                                                      <%if (r.price > 0) {%>
+                                                         $ <%= r.price %>
+                                                         <%} else {%>
+                                                            $ -<% } %>
+                                                  </div>
                                     </a>
-                                    <div class="product-description">
+                                    <!--<div class="product-description">
                                         <div class="functional-buttons">
                                             <a href="#" title="Add to Cart">
                                                 <i class="fa fa-shopping-cart"></i>
@@ -474,10 +472,18 @@
                                                 <i class="fa fa-compress"></i>
                                             </a>
                                         </div>
-                                    </div>
+                                    </div>!-->
                                 </div>
                                 <div class="banner-bottom text-center">
                                     <a href="#"><%= r.asin %></a>
+                                
+                                    <div class="rating-icon">
+                                        <i class="fa fa-star icolor"></i>
+                                        <i class="fa fa-star icolor"></i>
+                                        <i class="fa fa-star icolor"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -492,7 +498,7 @@
         <!-- Related Product Area End -->
 		<!-- Footer Area Start -->
 		<footer>
-		    <div class="footer-top-area">
+		    <!--<div class="footer-top-area">
 		        <div class="container">
 		            <div class="row">
 		                <div class="col-md-3 col-sm-8">
@@ -602,7 +608,7 @@
 		                </div>
 		            </div>
 		        </div>
-		    </div>
+		    </div>!-->
 		    <div class="footer-bottom">
 		        <div class="container">
 		            <div class="row">
