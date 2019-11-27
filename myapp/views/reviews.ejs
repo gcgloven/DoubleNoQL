@@ -340,7 +340,6 @@
                             <!--<div class="availability">
                                 <span>In stock</span>
                             </div>-->
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
                             <div class="single-product-price">
                                 <h2>$ <%= mongo.price %></h2>
                             </div>
@@ -368,25 +367,18 @@
                                 <span>
                             <%= mongo.categories %></span>
                             </div>
-                            <div class="social-share">
-                                <label>Share: </label>
-                                <ul class="social-share-icon">
-                                    <li><a href="#"><i class="flaticon-social"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-social-1"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-social-2"></i></a></li>
-                                </ul>
-                            </div>
+                            
                             <div id="product-comments-block-extra">
 								<ul class="comments-advices">                                        
                                     <form action="/reviews" method="POST">
-                                        <label for="username">Username:</label>
+                                        <label for="username">Username: </label>
                                         <input name="username" type="text" id="username" ><br>
-                                        <label for="userID">UserID:</label>
+                                        <label for="userID">UserID: </label>
                                         <input name="userID" type="text" id="username" style="margin-left: 24px;"><br>
                                         <input name="bookasin" type="text" id="bookasin" readonly hidden value=<%= asin %> >
-                                        <label for="summary">Summary:</label><br>
+                                        <label for="summary">Summary: </label><br>
                                         <textarea name="summary" type="text" id="review" style="height: 30px;width:360px;"></textarea><br>
-                                        <label for="review">Review:</label><br>
+                                        <label for="review">Review: </label><br>
                                         <textarea name="review" type="text" id="review" style="height: 80px;width:360px;"></textarea><br>
                                         <label for="rating">Rating:</label><br>
                                         <div class="rate">
