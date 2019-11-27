@@ -12,12 +12,11 @@ mongoose.connect(
   }
 );
 
-var book='';
-var params=null;
+var book = "";
+var params = null;
 mongoose.connection.on("error", function(error) {
   console.log("Connection error: ", error);
 });
-
 
 function getData(q) {
   var query = Product.find(q, " -_id", function(err) {
@@ -124,6 +123,11 @@ reviews.get("/:asin", function(req, res, next) {
       });
     } else {
       console.log("reviews : ", result);
+      var rating = 0;
+      for (i = 0; i < result.length; i++) {
+        rating += result[i].overall;
+      }
+      console.log("RATING: " + Math.round(rating / result.length));
       let mongoResult = await getData({ asin: asin });
       let arrValues = Object.values(mongoResult);
       console.log("result: " + arrValues[0]);
@@ -131,12 +135,14 @@ reviews.get("/:asin", function(req, res, next) {
         asin: arrValues[0].related.also_bought
       });
       let relValues = Object.values(related);
-      params={
+      params = {
         mongo: arrValues[0],
         reviews: result,
+        rating_stars: Math.round(rating / result.length),
+        rating: rating / result.length,
         rel: relValues,
-        asin:asin
-      }
+        asin: asin
+      };
       res.render("reviews", params);
 
       //post log information into mongodb database
@@ -158,14 +164,15 @@ reviews.get("/:asin", function(req, res, next) {
     }
   });
 });
-reviews.post('/', function(req, res) {
-  console.log('i got a request', req.body)
+reviews.post("/", function(req, res) {
+  console.log("i got a request", req.body);
   var today = new Date();
-  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var date =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
   console.log(date);
-  var unix=Math.round((new Date()).getTime() / 1000);
+  var unix = Math.round(new Date().getTime() / 1000);
   //body=JSON.parse(JSON.stringify(res.body));
-  console.log(req.body.rating)
+  console.log(req.body.rating);
   var q = `insert into reviews(asin,helpful,overall,review_text,review_date,reviewer_id,reviewer_name,summary,unix_review_time) values(\'${req.body.bookasin}\',\'[0, 0]\',${req.body.rating},\'${req.body.review}\',\'${date}\',\'${req.body.userID}\',\'${req.body.username}\',\'${req.body.summary}\',${unix})`;
   console.log(q);
   connection.query(q, function(err, result) {
@@ -173,9 +180,9 @@ reviews.post('/', function(req, res) {
       console.log("error: ", err);
       res.send(err);
     } else {
-      asin=req.body.asin
+      asin = req.body.asin;
       res.render("reviews", params);
     }
   });
-})
+});
 module.exports = reviews;

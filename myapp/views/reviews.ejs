@@ -320,12 +320,19 @@
                     <div class="col-md-6 col-sm-5">
                         <div class="single-product-details">
                             <div class="list-pro-rating">
-                                <i class="fa fa-star icolor"></i>
-                                <i class="fa fa-star icolor"></i>
-                                <i class="fa fa-star icolor"></i>
-                                <i class="fa fa-star icolor"></i>
-                                <i class="fa fa-star"></i>
+                                
+                                
+                                
+
+                                <% for(var i=0; i < rating_stars; i++) { %>
+                                    <i class="fa fa-star icolor"></i>
+                                  <% } %>
+                                  <% for(var i=0; i < 5-rating_stars; i++) { %>
+                                    <i class="fa fa-star"></i>
+                                  <% } %>
+                                <h4><%= rating.toFixed(2) %></h4>
                             </div>
+                            
                             <h2><%if (mongo.title) { 
                                 %> <%= mongo.title %> <% }
                             %>
@@ -414,7 +421,7 @@
                             <div class="tab-content review">
                                 <div role="tabpanel" class="tab-pane active" id="more-info">
                                   <table>
-                                    mongo data: <%= mongo %>
+                                    <!-- mongo data: <%= mongo %> -->
                                     <thead>
                                         <tr>
                                             <th>Reviewer</th>
@@ -500,13 +507,13 @@
                                 <div class="banner-bottom text-center">
                                     <a href="#"><%= r.asin %></a>
                                 
-                                    <div class="rating-icon">
+                                    <!-- <div class="rating-icon">
                                         <i class="fa fa-star icolor"></i>
                                         <i class="fa fa-star icolor"></i>
                                         <i class="fa fa-star icolor"></i>
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
