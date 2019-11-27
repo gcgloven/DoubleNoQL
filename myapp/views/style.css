@@ -366,20 +366,20 @@ body {
 /*  3.	Slider Area CSS
 /*----------------------------------------*/
 .layer-1 h2.title-1 {
-  animation: 0.8s ease-in-out 1s normal backwards 1 running fadeInLeft;
-  font-size: 80px;
+  animation: 0.3s ease-in-out 0.5s normal backwards 0.5 running fadeInLeft;
+  font-size: 100px;
   font-weight: 600;
   line-height: 1;
   margin: 0;
   text-transform: uppercase;
 }
 .layer-2 p.title-2 {
-  animation: 0.8s ease-in-out 1.9s normal backwards 1 running zoomInDown;
+  animation: 0.3s ease-in-out 0.5s normal backwards 0.5 running zoomInDown;
   font-size: 14px;
   padding: 25px 37% 35px;
 }
 .layer-3 a.title-3 {
-  animation: 0.8s ease-in-out 1.5s normal backwards 1 running fadeInRight;
+  animation: 0.3s ease-in-out 0.75s normal backwards 0.5 running fadeInRight;
   background: #32b5f3 none repeat scroll 0 0;
   border-bottom: medium none;
   border-radius: 30px;
@@ -415,7 +415,7 @@ body {
   width: 70px;
 }
 .layer-4 form {
-  animation: 0.8s ease-in-out 2.4s normal backwards 1 running fadeInUp;
+  animation: 0.8s ease-in-out 0.8s normal backwards 1 running fadeInUp;
 }
 /*----------------------------------------*/
 /*  4.	Online Banner Area CSS
@@ -1061,7 +1061,7 @@ body {
 /*  13.	About Page CSS
 /*----------------------------------------*/
 .breadcrumbs-area {
-  background: rgba(0, 0, 0, 0) url("img/header-bg.jpg") no-repeat scroll center center;
+   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("img/homebanner/bookbanner_1920_345.png") no-repeat scroll center center;
   color: #fefefe;
   text-align: center;
   text-transform: capitalize;
