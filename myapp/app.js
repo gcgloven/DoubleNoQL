@@ -27,7 +27,7 @@ app.use("/users", usersRouter);
 app.use("/reviews", reviewsRouter);
 app.use("/books", booksRouter);
 app.use("/products", productsRouter);
-app.use("/", searchRouter);
+app.use("/search", searchRouter);
 app.use("/addbook", addnewbookRouter);
 
 app.use(express.static(path.join(__dirname, "public")));
