@@ -2493,7 +2493,7 @@ h3.widget-title-modal {
 /*----------------------------------------*/
 /*  23.	scrollUp CSS
 /*----------------------------------------*/
-#scrollUp {
+/* #scrollUp {
   background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(0, 0, 0, 0);
   bottom: 20px;
@@ -2512,7 +2512,7 @@ h3.widget-title-modal {
 }
 #scrollUp i {
   line-height: 40px;
-}
+} */
 
 /*----------------------------------------*/
 /*  24.	Table for Reviews.ejs
