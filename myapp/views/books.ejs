@@ -397,11 +397,21 @@
                                         <li class="product-size-deatils">
                                             <div class="show-label">
                                                 <label><i class="fa fa-sort-amount-asc"></i>Sort by : </label>
-                                                <select>
-                                                    <option value="position" selected="selected">Position</option>
-                                                    <option value="Name">Name</option>
-                                                    <option value="Price">Price</option>
-                                                </select>
+                                                <form action="/books" method="POST" style="display:inline-block">
+                                                    <label><a href="/books"><button name="sortBy" id="sortBy"
+                                                                value="asin">Asin</button></a></label>
+                                                    <label><a href="/books"><button name="sortBy" id="sortBy"
+                                                                value="-price">Price</button></a></label>
+                                                    <!-- <select name = "sortBy" id = "sortBy">
+                                                        <option value="asin">Asin</option>
+                                                        <option value="-price">Price</option>
+                                                    </select> -->
+                                                    <!-- <script>
+                                                        var e = document.getElementById("sortBy");
+                                                        var sorter = e.options[e.selectedIndex].value;
+                                                        </script> -->
+    
+                                                </form>
                                             </div>
                                         </li>	
 

@@ -1,4 +1,5 @@
 "use strict";
+const fs = require("fs");
 var mongoose = require("mongoose"),
   Product = require("./../models/bookModel"),
   Product = mongoose.model("Books");
@@ -21,9 +22,22 @@ var bodyParser = require("body-parser");
 products.use(bodyParser.json());
 products.use(bodyParser.urlencoded({ extended: true }));
 
+var sorter = [];
+products.post("/", function(req, res) {
+  var s = req.body.sortBy;
+  if (sorter.length != 0) {
+    sorter = [];
+  }
+  sorter.push(String(s));
+  console.log("new sort");
+  console.log(sorter[0]);
+  res.redirect("/books");
+});
+
 products.get("/:page", function(req, res, next) {
   var perPage = 9;
   var page = req.params.page || 1;
+
   // if (req.query.sort == "price") {
   //   var sorter = "-price";
   // } else {
@@ -33,12 +47,13 @@ products.get("/:page", function(req, res, next) {
   // console.log("sorter: " + req.body.sortBy);
 
   Product.find({})
-    //.sort(sorter1)
+    .sort(sorter[0])
     .skip(perPage * page - perPage)
     .limit(9)
     .exec(function(err, products) {
       Product.count().exec(function(err, count) {
         if (err) return next(err);
+        console.log(count);
         res.render("books", {
           books: products,
           current: page,
@@ -55,8 +70,16 @@ products.get("/", function(req, res, next) {
   var perPage = 9;
   var page = req.params.page || 1;
 
+  // if (req.query.sort == "price") {
+  //   var sorter = "-price";
+  // } else {
+  //   var sorter = "asin";
+  // }
+  // const sorter1 = req.body.sortBy;
+  // console.log("sorter: " + req.body.sortBy);
+
   Product.find({})
-    //.sort("-price")
+    .sort(sorter[0])
     .skip(perPage * page - perPage)
     .limit(9)
     .exec(function(err, products) {
