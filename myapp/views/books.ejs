@@ -448,6 +448,7 @@
                             <div class="tab-content">
                                 <div class="row tab-pane fade in active" id="home">
                                     <div class="shop-single-product-area">
+                                        <% if (books) { %>
                                         <% books.forEach(function (b) { %>
                                         <div class="col-md-4 col-sm-6">
                                             <div class="single-banner">
@@ -494,6 +495,7 @@
                                             </div>
                                                               </div>
                                                               <% }) %>
+                                                              <% } %>
 
 
 
