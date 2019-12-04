@@ -1501,7 +1501,7 @@ p.form-row-phone {
 }
 .shop-widget-top {
   background: #f6f6f6 none repeat scroll 0 0;
-  padding: 25px 0;
+  padding: 1px 0;
 }
 .sidebar-title {
   font-size: 16px;
@@ -1535,7 +1535,7 @@ p.form-row-phone {
   padding: 19px 0;
 }
 .widget-categories {
-  margin-bottom: 37px;
+  margin-bottom: 25px;
 }
 .info-widget {
   padding: 0 17px;
@@ -1570,9 +1570,9 @@ p.form-row-phone {
   transition: all 0.3s ease 0s;
   width: 100%;
 }
-.widget-buttom input {
+/* .widget-buttom input {
   width: 40%;
-}
+} */
 .widget-buttom input:hover {
   background: #000000 none repeat scroll 0 0;
   color: #ffffff;
@@ -1661,11 +1661,13 @@ p.form-row-phone {
   font-weight: 600;
 }
 .product-size-deatils {
-  margin-right: 30px;
+  /* margin-right: 30px; */
+  margin-left: 5px;
 }
 .show-label label {
   font-size: 14px;
   font-weight: 500;
+  margin-left: 5px;
 }
 .show-label select {
   -moz-appearance: none;
@@ -1684,7 +1686,8 @@ p.form-row-phone {
   width: 0 !important;
 }
 .show-label label i {
-  margin-right: 10px;
+  /* margin-right: 10px; */
+  margin-left: 5px;
 }
 .shop-single-product-area .single-banner {
   float: left;

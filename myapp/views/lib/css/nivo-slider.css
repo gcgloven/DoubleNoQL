@@ -104,20 +104,20 @@
     display:none;
 }
 /* Direction nav styles (e.g. Next & Prev) */
-.nivo-directionNav a {
+/* .nivo-directionNav a {
 	position:absolute;
 	top:45%;
 	z-index:9;
-	cursor:pointer;
+    cursor:pointer;
 }
 .nivo-prevNav {
 	left:0px;
 }
 .nivo-nextNav {
 	right:0px;
-}
+} */
 /* Control nav styles (e.g. 1,2,3...) */
-.nivo-controlNav {
+/* .nivo-controlNav {
 	text-align:center;
 	padding: 15px 0;
 }
@@ -126,7 +126,7 @@
 }
 .nivo-controlNav a.active {
 	font-weight:bold;
-}
+} */
 /* ------------------------------
 Default Theme
 ---------------------------------*/
