@@ -1677,8 +1677,13 @@ p.form-row-phone {
   margin-left: 5px;
 }
 .shop-pagination {
-  margin-left: 10px;
+  margin-left: 10px;}
+
+.shop-highlightedpage {
+ background-color: aqua;
+ margin-left: 10px;
 }
+
 .shop-pagination a i {
   border: medium none !important;
   height: 0 !important;

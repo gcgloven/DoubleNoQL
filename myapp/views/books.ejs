@@ -423,7 +423,7 @@
 
                                         <% if (pages > 0) { %>
                                             <% if (current == 1) { %>
-                                                <li class="shop-pagination"><a>First</a></li>
+                                                <li class="shop-highlightedpage"><a>First</a></li>
                                             <% } else { %>
                                                 <li class="shop-pagination"><a href="/books/1">First</a></li>
                                             <% } %>
@@ -433,7 +433,7 @@
                                             <% } %>
                                             <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
                                                 <% if (i == current) { %>
-                                                    <li class="shop-pagination"><a><%= i %></a></li>
+                                                    <li class="shop-highlightedpage"><a><%= i %></a></li>
                                                 <% } else { %>
                                                     <li class="shop-pagination"><a href="/books/<%= i %>"><%= i %></a></li>
                                                 <% } %>
@@ -442,7 +442,7 @@
                                                 <% } %>
                                             <% } %>
                                             <% if (current == pages) { %>
-                                                <li class="shop-pagination"><a>Last</a></li>
+                                                <li class="shop-highlightedpage"><a>Last</a></li>
                                             <% } else { %>
                                                 <li class="shop-pagination"><a href="/books/<%= pages %>">Last</a></li>
                                             <% } %>
