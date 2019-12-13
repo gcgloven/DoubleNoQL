@@ -25,6 +25,8 @@ products.use(bodyParser.urlencoded({ extended: true }));
 var sorter = [];
 products.post("/", function(req, res) {
   var s = req.body.sortBy;
+  var d=req.body.price;
+  console.log(d);
   if (sorter.length != 0) {
     sorter = [];
   }
