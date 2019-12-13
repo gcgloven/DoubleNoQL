@@ -23,14 +23,28 @@ products.use(bodyParser.json());
 products.use(bodyParser.urlencoded({ extended: true }));
 
 var sorter = [];
+var minPrice = 0;
+var maxPrice = 1000;
 products.post("/", function(req, res) {
   var s = req.body.sortBy;
-  var d=req.body.price;
-  console.log(d);
+  var d = req.body.price;
+  var slide = req.body.slide;
   if (sorter.length != 0) {
     sorter = [];
   }
+  if (slide) {
+    var slider = slide.split(",");
+    minPrice = slider[0];
+    maxPrice = slider[1];
+    sorter.push("price");
+  }
+  if (s) {
+    minPrice = 0;
+    maxPrice = 1000;
+  }
+
   sorter.push(String(s));
+  console.log(minPrice, maxPrice);
   console.log("new sort");
   console.log(sorter[0]);
   res.redirect("/books");
@@ -48,7 +62,7 @@ products.get("/:page", function(req, res, next) {
   // const sorter1 = req.body.sortBy;
   // console.log("sorter: " + req.body.sortBy);
 
-  Product.find({})
+  Product.find({ price: { $gt: minPrice, $lt: maxPrice } })
     .sort(sorter[0])
     .skip(perPage * page - perPage)
     .limit(9)
@@ -80,7 +94,7 @@ products.get("/", function(req, res, next) {
   // const sorter1 = req.body.sortBy;
   // console.log("sorter: " + req.body.sortBy);
 
-  Product.find({})
+  Product.find({ price: { $gt: minPrice, $lt: maxPrice } })
     .sort(sorter[0])
     .skip(perPage * page - perPage)
     .limit(9)

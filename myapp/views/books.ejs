@@ -299,10 +299,11 @@
                                         <div class="price-filter">
                                             <div id="slider-range"></div>
                                             <div class="price-slider-amount">
-                                                <form action="/books" method="POST" style="display:inline-block">
+                                                <form action="/books" method="POST">
                                                     <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
+                                                    <input type="hidden" name="slide" id="slide"/>
                                                         <div class="widget-buttom">
-                                                            <input type="submit"  value="Filter"/>  
+                                                            <input type="submit"  value="Filter" id="filter"/>  
                                                             <input type="reset" value="CLEAR" />
                                                     </div>  
                                                 </form>

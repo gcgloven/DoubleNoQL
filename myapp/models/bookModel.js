@@ -7,7 +7,7 @@ var bookSchema = new Schema({
   categories: { type: Array, Required: "Product name cannot be left blank." },
   description: { type: String, Required: "Product name cannot be left blank." },
   imUrl: { type: String, Required: "Product name cannot be left blank." },
-  price: { type: String, Required: "Product name cannot be left blank." },
+  price: { type: Number, Required: "Product name cannot be left blank." },
   related: { type: Object, Required: "Product name cannot be left blank." },
   salesRank: { type: Object },
   title: { type: String, Required: "Product name cannot be left blank." }
