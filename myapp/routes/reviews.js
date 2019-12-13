@@ -164,7 +164,7 @@ reviews.get("/:asin", function(req, res, next) {
     }
   });
 });
-reviews.post("/", function(req, res) {
+reviews.post("/:asin", function(req, res) {
   console.log("i got a request", req.body);
   var today = new Date();
   var date =
@@ -181,7 +181,7 @@ reviews.post("/", function(req, res) {
       res.send(err);
     } else {
       asin = req.body.asin;
-      res.render("reviews", params);
+      res.redirect("back");
     }
   });
 });
