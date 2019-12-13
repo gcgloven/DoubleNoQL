@@ -401,14 +401,17 @@
                                             <div class="show-label">
                                                 <label><i class="fa fa-sort-amount-asc"></i>Sort by : </label>
                                                 <form action="/books" method="POST" style="display:inline-block">
-                                                    <label><a href="/books"><button name="sortBy" id="sortBy"
+                                                    <!-- <label><a href="/books"><button name="sortBy" id="sortBy"
                                                                 value="asin">Asin</button></a></label>
                                                     <label><a href="/books"><button name="sortBy" id="sortBy"
-                                                                value="-price">Price</button></a></label>
-                                                    <!-- <select name = "sortBy" id = "sortBy">
-                                                        <option value="asin">Asin</option>
-                                                        <option value="-price">Price</option>
-                                                    </select> -->
+                                                                value="-price">Price</button></a></label> -->
+                                                    <select name = "sortBy" id = "sortBy" onclick="this.form.submit()">
+                                                        <option value="asin" id="byAsin">Asin</option>
+                                                        <option value="price" id="byAscPrice">Price ↑</option>
+                                                        <option value="-price" id="byDscPrice">Price ↓</option>
+                                                        <input type="hidden" id="sorter" name="sorter"/>
+                                                    </select>
+                                                    
                                                     <!-- <script>
                                                         var e = document.getElementById("sortBy");
                                                         var sorter = e.options[e.selectedIndex].value;

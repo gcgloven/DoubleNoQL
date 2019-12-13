@@ -29,6 +29,7 @@ products.post("/", function(req, res) {
   var s = req.body.sortBy;
   var d = req.body.price;
   var slide = req.body.slide;
+  console.log(s);
   if (sorter.length != 0) {
     sorter = [];
   }
@@ -39,6 +40,7 @@ products.post("/", function(req, res) {
     sorter.push("price");
   }
   if (s) {
+    sorter.push(String(s));
     minPrice = 0;
     maxPrice = 1000;
   }

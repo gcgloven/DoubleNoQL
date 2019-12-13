@@ -200,6 +200,24 @@ Blog list owl active
   // })
 
   /*----------------------------------
+  Dropdown menu
+  -----------------------------------*/
+  $("#byAsin").on("click", function() {
+    $("#sortBy")
+      .val("asin")
+      .attr("selected", "");
+  });
+  $("#byAscPrice").on("click", function() {
+    $("#sortBy")
+      .val("price")
+      .attr("selected", "");
+  });
+  $("#byDscPrice").on("click", function() {
+    $("#sortBy")
+      .val("-price")
+      .attr("selected", "");
+  });
+  /*----------------------------------
  Create an account toggle function 
  ----------------------------------*/
   $("#ship-box").on("click", function() {
