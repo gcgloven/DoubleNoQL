@@ -328,6 +328,14 @@
                             <div class="single-product-price">
                                 <h2>$ <%= mongo.price %></h2>
                             </div>
+
+                            <div class="single-product-description">
+                                <label>Description:</label>
+                                <%if (mongo.description) {%>
+                                    <%= mongo.description %> <%} 
+                                    else {%>[Not Available]<% } %> %>
+                                <hr>
+                            </div>
                             <!--<div class="product-attributes clearfix">
                                 <span class="pull-left" id="quantity-wanted-p">
 									<span class="dec qtybutton">-</span>
