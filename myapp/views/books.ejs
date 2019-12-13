@@ -299,10 +299,11 @@
                                         <div class="price-filter">
                                             <div id="slider-range"></div>
                                             <div class="price-slider-amount">
-                                                <form action="/books" method="POST" style="display:inline-block">
+                                                <form action="/books" method="POST">
                                                     <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
+                                                    <input type="hidden" name="slide" id="slide"/>
                                                         <div class="widget-buttom">
-                                                            <input type="submit"  value="Filter"/>  
+                                                            <input type="submit"  value="Filter" id="filter"/>  
                                                             <input type="reset" value="CLEAR" />
                                                     </div>  
                                                 </form>
@@ -400,14 +401,17 @@
                                             <div class="show-label">
                                                 <label><i class="fa fa-sort-amount-asc"></i>Sort by : </label>
                                                 <form action="/books" method="POST" style="display:inline-block">
-                                                    <label><a href="/books"><button name="sortBy" id="sortBy"
+                                                    <!-- <label><a href="/books"><button name="sortBy" id="sortBy"
                                                                 value="asin">Asin</button></a></label>
                                                     <label><a href="/books"><button name="sortBy" id="sortBy"
-                                                                value="-price">Price</button></a></label>
-                                                    <!-- <select name = "sortBy" id = "sortBy">
-                                                        <option value="asin">Asin</option>
-                                                        <option value="-price">Price</option>
-                                                    </select> -->
+                                                                value="-price">Price</button></a></label> -->
+                                                    <select name = "sortBy" id = "sortBy" onclick="this.form.submit()">
+                                                        <option value="asin" id="byAsin">Asin</option>
+                                                        <option value="price" id="byAscPrice">Price ↑</option>
+                                                        <option value="-price" id="byDscPrice">Price ↓</option>
+                                                        <input type="hidden" id="sorter" name="sorter"/>
+                                                    </select>
+                                                    
                                                     <!-- <script>
                                                         var e = document.getElementById("sortBy");
                                                         var sorter = e.options[e.selectedIndex].value;
@@ -419,7 +423,7 @@
 
                                         <% if (pages > 0) { %>
                                             <% if (current == 1) { %>
-                                                <li class="shop-pagination"><a>First</a></li>
+                                                <li class="shop-highlightedpage"><a>First</a></li>
                                             <% } else { %>
                                                 <li class="shop-pagination"><a href="/books/1">First</a></li>
                                             <% } %>
@@ -429,7 +433,7 @@
                                             <% } %>
                                             <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
                                                 <% if (i == current) { %>
-                                                    <li class="shop-pagination"><a><%= i %></a></li>
+                                                    <li class="shop-highlightedpage"><a><%= i %></a></li>
                                                 <% } else { %>
                                                     <li class="shop-pagination"><a href="/books/<%= i %>"><%= i %></a></li>
                                                 <% } %>
@@ -438,7 +442,7 @@
                                                 <% } %>
                                             <% } %>
                                             <% if (current == pages) { %>
-                                                <li class="shop-pagination"><a>Last</a></li>
+                                                <li class="shop-highlightedpage"><a>Last</a></li>
                                             <% } else { %>
                                                 <li class="shop-pagination"><a href="/books/<%= pages %>">Last</a></li>
                                             <% } %>

@@ -1677,8 +1677,13 @@ p.form-row-phone {
   margin-left: 5px;
 }
 .shop-pagination {
-  margin-left: 10px;
+  margin-left: 10px;}
+
+.shop-highlightedpage {
+ background-color: aqua;
+ margin-left: 10px;
 }
+
 .shop-pagination a i {
   border: medium none !important;
   height: 0 !important;
@@ -1786,6 +1791,17 @@ ul.product-tabs {
   position: absolute;
   width: 100%;
 }
+
+.single-product-description > h3::after {
+  background: #F0F0F0 none repeat scroll 0 0;
+  font-size: 20px;
+  bottom: 0;
+  content: "";
+  height: 2px;
+  position: absolute;
+  width: 100%;
+}
+
 .product-attributes {
   margin-bottom: 10px;
 }
@@ -2270,7 +2286,7 @@ a.wish-btn {
 }
 .modal-product .product-info .price-box .special-price {
   color: #32b5f3;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
 }
 .modal-product .product-info .see-all {
