@@ -27,6 +27,7 @@ products.use(bodyParser.urlencoded({ extended: true }));
 var sorter = [];
 var minPrice = 0;
 var maxPrice = 1000;
+var test = { $gt: minPrice, $lt: maxPrice };
 products.post("/", function(req, res) {
   var s = req.body.sortBy;
   var d = req.body.price;
@@ -40,6 +41,9 @@ products.post("/", function(req, res) {
     minPrice = slider[0];
     maxPrice = slider[1];
     sorter.push("price");
+    if (minPrice == 0 && maxPrice == 0) {
+      test = 0;
+    }
   }
   if (s) {
     sorter.push(String(s));
@@ -66,7 +70,7 @@ products.get("/:page", function(req, res, next) {
   // const sorter1 = req.body.sortBy;
   // console.log("sorter: " + req.body.sortBy);
 
-  Product.find({ price: { $gt: minPrice, $lt: maxPrice } })
+  Product.find({ price: test })
     .sort(sorter[0])
     .skip(perPage * page - perPage)
     .limit(9)
@@ -98,7 +102,7 @@ products.get("/", function(req, res, next) {
   // const sorter1 = req.body.sortBy;
   // console.log("sorter: " + req.body.sortBy);
 
-  Product.find({ price: { $gt: minPrice, $lt: maxPrice } })
+  Product.find({ price: test })
     .sort(sorter[0])
     .skip(perPage * page - perPage)
     .limit(9)
