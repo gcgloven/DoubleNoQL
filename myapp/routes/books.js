@@ -5,6 +5,8 @@ var mongoose = require("mongoose"),
   Product = mongoose.model("Books");
 
 mongoose.connect(
+  // Switch if you need a localhost.
+  // "mongodb://localhost:27017/dbproj",
   "mongodb://ec2-52-221-249-173.ap-southeast-1.compute.amazonaws.com/dbproj",
   {
     useUnifiedTopology: true,

@@ -410,6 +410,7 @@
                                     <thead>
                                         <tr>
                                             <th>Reviewer</th>
+                                            <th>Review Summary</th>
                                             <th>Review</th>
                                         </tr>
                                     </thead>
@@ -417,6 +418,7 @@
                                     <% reviews.forEach(function (r) { %>
                                        <tr>
                                            <td><%= r.reviewer_name %></td>
+                                           <td><%= r.summary %></td>
                                            <td><%= r.review_text %></td>
                                        </tr>
                                     <% }) %>
