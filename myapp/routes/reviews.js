@@ -25,6 +25,11 @@ function getData(q) {
   return query;
 }
 
+function getLog() {
+  var query = Log.find().limit(5);
+  return query;
+}
+
 var connection = require("./../db/bookReviewsDb");
 
 var express = require("express");
@@ -44,6 +49,7 @@ reviews.get("/", function(req, res, next) {
         date: new Date() + "",
         status: "fail"
       });
+
       newLog.save(function(err) {
         //save done
         if (err) {
@@ -120,32 +126,9 @@ reviews.get("/:asin", function(req, res, next) {
           process.exit();
         }
         console.log("Log Saved");
+        console.log(newLog);
       });
     } else {
-      console.log("reviews : ", result);
-      var rating = 0;
-      for (i = 0; i < result.length; i++) {
-        rating += result[i].overall;
-      }
-      console.log("RATING: " + Math.round(rating / result.length));
-      let mongoResult = await getData({ asin: asin });
-      let arrValues = Object.values(mongoResult);
-      console.log("result: " + arrValues[0]);
-      let related = await getData({
-        asin: arrValues[0].related.also_bought
-      });
-      let relValues = Object.values(related);
-      params = {
-        mongo: arrValues[0],
-        reviews: result,
-        rating_stars: Math.round(rating / result.length),
-        rating: rating / result.length,
-        rel: relValues,
-        asin: asin
-      };
-      res.render("reviews", params);
-
-      //post log information into mongodb database
       var newLog = new Log({
         asin: asin,
         request: "Book Review",
@@ -160,7 +143,39 @@ reviews.get("/:asin", function(req, res, next) {
           process.exit();
         }
         console.log("Log Saved");
+        console.log(newLog.status);
       });
+
+      console.log("reviews : ", result);
+      var rating = 0;
+      for (i = 0; i < result.length; i++) {
+        rating += result[i].overall;
+      }
+      console.log("RATING: " + Math.round(rating / result.length));
+      let mongoResult = await getData({ asin: asin });
+      let logResult = await getLog();
+      let arrValues = Object.values(mongoResult);
+      console.log("result: " + arrValues[0]);
+      let related = await getData({
+        asin: arrValues[0].related.also_bought
+      });
+      let relValues = Object.values(related);
+      params = {
+        mongo: arrValues[0],
+        reviews: result,
+        rating_stars: Math.round(rating / result.length),
+        rating: rating / result.length,
+        rel: relValues,
+        asin: asin,
+        status: newLog.status,
+        req: newLog.request,
+        date: newLog.date,
+        log_saved: "Log saved",
+        log_result: logResult
+      };
+      res.render("reviews", params);
+
+      //post log information into mongodb database
     }
   });
 });
@@ -185,4 +200,5 @@ reviews.post("/:asin", function(req, res) {
     }
   });
 });
+
 module.exports = reviews;

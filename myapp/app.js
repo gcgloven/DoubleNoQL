@@ -11,6 +11,7 @@ var booksRouter = require("./routes/books");
 var productsRouter = require("./routes/products");
 var searchRouter = require("./routes/search");
 var addnewbookRouter = require("./routes/addnewbook");
+var logsRouter = require("./routes/logs");
 var app = express();
 
 // view engine setup
@@ -29,6 +30,7 @@ app.use("/books", booksRouter);
 app.use("/products", productsRouter);
 app.use("/search", searchRouter);
 app.use("/addbook", addnewbookRouter);
+app.use("/logs", logsRouter);
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(__dirname + "/views"));
