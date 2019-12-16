@@ -4,10 +4,13 @@ var mongoose = require("mongoose"),
   Product = require("./../models/bookModel"),
   Product = mongoose.model("Books");
 
+var mongo_ip = require("./mongo_ip").mongo_ip
+
 mongoose.connect(
   // Switch if you need a localhost.
   // "mongodb://localhost:27017/dbproj",
-  "mongodb://ec2-52-221-249-173.ap-southeast-1.compute.amazonaws.com/dbproj",
+  
+  "mongodb://" + mongo_ip + "/dbproj",
   {
     useUnifiedTopology: true,
     useNewUrlParser: true

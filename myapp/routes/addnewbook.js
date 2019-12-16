@@ -1,15 +1,18 @@
 "use strict";
+
+var mongo_ip = require("./mongo_ip").mongo_ip
+
 var mongoose = require("mongoose"),
   Product = require("./../models/bookModel"),
   Product = mongoose.model("Books"),
   Log = require("./../models/logModel"),
   Log = mongoose.model("Logs");
-  mongoose.connect("mongodb://ec2-52-221-249-173.ap-southeast-1.compute.amazonaws.com/dbproj", {
+  mongoose.connect("mongodb://" + mongo_ip + "/dbproj", {
     useUnifiedTopology: true,
     useNewUrlParser: true
 });
 
-mongoose.connect("mongodb://ec2-52-221-249-173.ap-southeast-1.compute.amazonaws.com/dbproj", {
+mongoose.connect("mongodb://" + mongo_ip + "/dbproj", {
   useUnifiedTopology: true,
   useNewUrlParser: true
 });
