@@ -61,7 +61,7 @@
                 <div class="row">
                     <div class="col-md-2 col-sm-6 col-xs-6">
                         <div class="header-logo">
-                            <a href="/index.html">
+                            <a href="/">
                                 <img src="/img/logo.png" alt="">
                             </a>
                         </div>
@@ -191,9 +191,9 @@
 						<div class="mobile-menu">
 							<nav id="dropdown">
 								<ul id="nav">   
-                                    <li><a href="index.html">HOME</a></li>
-                                    <li><a href="index.html">ADD BOOK</a></li>
-                                    <li><a href="index.html">LIST OF BOOKS</a></li>
+                                    <li><a href="/">HOME</a></li>
+                                    <li><a href="/addbook">ADD BOOK</a></li>
+                                    <li><a href="/books">LIST OF BOOKS</a></li>
                                 </ul>
 							</nav>
 						</div>
@@ -268,11 +268,11 @@
                                             <div id="slider-range"></div>
                                             <div class="price-slider-amount">
                                                 <form action="/books" method="POST">
-                                                    <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
+                                                    <input type="text" id="amount" name="price"  placeholder="Add Your Price" readonly/>
                                                     <input type="hidden" name="slide" id="slide"/>
                                                         <div class="widget-buttom">
                                                             <input type="submit"  value="Filter" id="filter"/>  
-                                                            <input type="reset" value="CLEAR" />
+                                                            <!-- <input type="reset" value="CLEAR" /> -->
                                                     </div>  
                                                 </form>
                                             </div>
@@ -456,8 +456,8 @@
                                               <div class="banner-bottom text-center">
                                                 <div class="banner-bottom-title">
                                                     <%
-                                                    if (b.title != null) { %> <a href="#"><%= b.title %></a> <% }
-                                                    else {%> <a>[MISSING TITLE]</a> <%}
+                                                    if (b.title != null) { %> <div style="font-size = 6px;"><%= b.title %></div> <% }
+                                                    else {%> <div>[MISSING TITLE]</div> <%}
                                                     %>
                                                 </div>
                                                 </div> 
@@ -904,7 +904,7 @@
 		<!-- Footer Area Start -->
 		<footer>
             <div class="popup" onclick="popUp()"><button class = "open-button"><img src="https://media.discordapp.net/attachments/543292055728685056/657619356821225483/12-16-19_2-08-33_AM_2.png" style = "width: 80px; height: 80px;"></img></button>
-                <div class="chat-popup" id="chatBot">
+                <div class="chat-popup show" id="chatBot">
                     <iframe height="800" width="500" src="https://bot.dialogflow.com/d08d2782-1de9-4835-9517-24f903a75bf1"></iframe>
                         <hr>
                         <button class = "hide-button">Hide</button>
