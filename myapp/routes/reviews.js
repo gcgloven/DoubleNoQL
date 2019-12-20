@@ -1,19 +1,17 @@
 "user strict";
 
-var mongo_ip = require("./mongo_ip").mongo_ip
+var mongo_ip = require("./mongo_ip").mongo_ip;
 
+var HttpStatus = require("http-status-codes");
 var mongoose = require("mongoose"),
   Product = require("./../models/bookModel"),
   Product = mongoose.model("Books"),
   Log = require("./../models/logModel"),
   Log = mongoose.model("Logs");
-mongoose.connect(
-  "mongodb://" + mongo_ip + "/dbproj",
-  {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-  }
-);
+mongoose.connect("mongodb://" + mongo_ip + "/dbproj", {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+});
 
 var book = "";
 var params = null;
@@ -39,104 +37,83 @@ var express = require("express");
 var reviews = express.Router();
 
 /* GET home page. */
-reviews.get("/", function(req, res, next) {
-  connection.query("Select * from reviews limit 10", function(err, result) {
-    if (err) {
-      console.log("error: ", err);
-      res.send(err);
+// reviews.get("/", function(req, res, next) {
+//   connection.query("Select * from reviews limit 10", function(err, result) {
+//     if (err) {
+//       console.log("error: ", err);
+//       res.send(err);
 
-      //post log information into mongodb database
-      var newLog = new Log({
-        asin: asin,
-        request: "Book Review",
-        date: new Date() + "",
-        status: "fail"
-      });
+//       //post log information into mongodb database
+//       var newLog = new Log({
+//         asin: asin,
+//         request: "Book Review",
+//         date: new Date() + "",
+//         status: "fail"
+//       });
 
-      newLog.save(function(err) {
-        //save done
-        if (err) {
-          console.log(err);
-          status: err;
-          process.exit();
-        }
-        console.log("Log Saved");
-      });
-    } else {
-      console.log("reviews : ", result);
-      res.render("reviews", {
-        title: "List of all book reviews",
-        reviews: result
-      });
+//       newLog.save(function(err) {
+//         //save done
+//         if (err) {
+//           console.log(err);
+//           status: err;
+//           process.exit();
+//         }
+//         console.log("Log Saved");
+//       });
+//     } else {
+//       console.log("reviews : ", result);
+//       res.render("reviews", {
+//         title: "List of all book reviews",
+//         reviews: result
+//       });
 
-      //post log information into mongodb database
-      var newLog = new Log({
-        asin: asin,
-        request: "Book Review",
-        date: new Date() + "",
-        status: "success"
-      });
-      newLog.save(function(err) {
-        //save done
-        if (err) {
-          console.log(err);
-          status: err;
-          process.exit();
-        }
-        console.log("Log Saved");
-      });
-    }
-  });
+//       //post log information into mongodb database
+//       var newLog = new Log({
+//         asin: asin,
+//         request: "Book Review",
+//         date: new Date() + "",
+//         status: "success"
+//       });
+//       newLog.save(function(err) {
+//         //save done
+//         if (err) {
+//           console.log(err);
+//           status: err;
+//           process.exit();
+//         }
+//         console.log("Log Saved");
+//       });
+//     }
+//   });
 
-  //post log information into mongodb database
-  var newLog = new Log({
-    asin: "Null",
-    request: "Book Review",
-    date: new Date() + ""
-  });
-  newLog.save(function(err) {
-    //save done
-    if (err) {
-      console.log(err);
-      status: err;
-      process.exit();
-    }
-    console.log("Log Saved");
-  });
-});
+//   //post log information into mongodb database
+//   var newLog = new Log({
+//     asin: "Null",
+//     request: "Book Review",
+//     date: new Date() + ""
+//   });
+//   newLog.save(function(err) {
+//     //save done
+//     if (err) {
+//       console.log(err);
+//       status: err;
+//       process.exit();
+//     }
+//     console.log("Log Saved");
+//   });
+// });
 
 reviews.get("/:asin", function(req, res, next) {
   var asin = req.params.asin;
   var q = "Select * from reviews where asin = '" + asin + "'";
 
   connection.query(q, async function(err, result) {
-    if (err) {
-      console.log("error: ", err);
-      res.send(err);
-
-      //post log information into mongodb database
+    try {
       var newLog = new Log({
-        asin: asin,
+        //asin: asin,
         request: "Book Review",
         date: new Date() + "",
-        status: "fail"
-      });
-      newLog.save(function(err) {
-        //save done
-        if (err) {
-          console.log(err);
-          status: err;
-          process.exit();
-        }
-        console.log("Log Saved");
-        console.log(newLog);
-      });
-    } else {
-      var newLog = new Log({
-        asin: asin,
-        request: "Book Review",
-        date: new Date() + "",
-        status: "success"
+        status: HttpStatus.getStatusText(HttpStatus.OK)
       });
       newLog.save(function(err) {
         //save done
@@ -170,18 +147,41 @@ reviews.get("/:asin", function(req, res, next) {
         rating: rating / result.length,
         rel: relValues,
         asin: asin,
-        status: newLog.status,
-        req: newLog.request,
-        date: newLog.date,
-        log_saved: "Log saved",
-        log_result: logResult
+        log_status: newLog.status,
+        log_req: newLog.request,
+        log_date: newLog.date,
+        log_saved: "Log saved"
       };
       res.render("reviews", params);
+    } catch (err) {
+      console.log("error: ", err);
+      res.send(err);
+
+      //initialize newLog
+      var newLog = new Log({
+        //asin: asin,
+        request: "Book Review",
+        date: new Date() + "",
+        status: HttpStatus.getStatusText(HttpStatus.INTERNAL_SERVER_ERROR)
+      });
+
+      //post log information into mongodb database
+      newLog.save(function(err) {
+        //save done
+        if (err) {
+          console.log(err);
+          newLog.status = err;
+          process.exit();
+        }
+        console.log("Log Saved");
+        console.log(newLog);
+      });
 
       //post log information into mongodb database
     }
   });
 });
+
 reviews.post("/:asin", function(req, res) {
   console.log("i got a request", req.body);
   var today = new Date();
