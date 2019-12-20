@@ -33,6 +33,7 @@ var sorter = [];
 var minPrice = 0;
 var maxPrice = 1000;
 var price = { $gt: minPrice, $lt: maxPrice };
+var finder = {};
 products.post("/", function(req, res) {
   var s = req.body.sortBy;
   var d = req.body.price;
@@ -49,11 +50,13 @@ products.post("/", function(req, res) {
     if (minPrice == 0 && maxPrice == 0) {
       price = 0;
     }
+    finder = { price: { $gt: minPrice, $lt: maxPrice } };
   }
   if (s) {
     sorter.push(String(s));
     minPrice = 0;
     maxPrice = 1000;
+    finder = {};
   }
 
   sorter.push(String(s));
@@ -84,7 +87,7 @@ products.get("/:page", function(req, res, next) {
     var perPage = 9;
     var page = req.params.page || 1;
 
-    Product.find({ price: price })
+    Product.find(finder)
       .sort(sorter[0])
       .skip(perPage * page - perPage)
       .limit(9)
@@ -106,6 +109,56 @@ products.get("/:page", function(req, res, next) {
           console.log(products);
         });
       });
+
+    // async function getProduct(pdt) {
+    //   var product = await pdt.find().sort(sorter[0]);
+    //   return product;
+    // }
+    // var pdt = getProduct(Product);
+    // console.log(pdt);
+
+    // pdt.countDocuments({}, function(err, count) {
+    //   var bookCount = count;
+    //   console.log("book count: " + bookCount);
+    //   pdt.skip(perPage * page - perPage).limit(9);
+
+    //   res.render("books", {
+    //     books: pdt,
+    //     current: page,
+    //     pages: Math.ceil(bookCount / perPage),
+    //     query: req.query,
+    //     url: req.originalUrl,
+
+    //     log_status: newLog.status,
+    //     log_req: newLog.request,
+    //     log_date: newLog.date
+    //   });
+    // });
+
+    // res.render("books", {
+    //   books: product.products,
+    //   current: product.page,
+    //   pages: Math.ceil(bookCount / perPage),
+    //   query: req.query,
+    //   url: req.originalUrl,
+
+    //   log_status: newLog.status,
+    //   log_req: newLog.request,
+    //   log_date: newLog.date
+    // });
+
+    // res.render("books", {
+    //   books: product.products,
+    //   current: product.page,
+    //   pages: Math.ceil(count / perPage),
+    //   query: req.query,
+    //   url: req.originalUrl,
+
+    //   log_status: newLog.status,
+    //   log_req: newLog.request,
+    //   log_date: newLog.date
+    // });
+    console.log(products);
   } catch (err) {
     console.log("error: ", err);
     res.statusCode(400).send("Bad request");
@@ -162,7 +215,7 @@ products.get("/", function(req, res, next) {
     // const sorter1 = req.body.sortBy;
     // console.log("sorter: " + req.body.sortBy);
 
-    Product.find({ price: price })
+    Product.find(finder)
       .sort(sorter[0])
       .skip(perPage * page - perPage)
       .limit(9)
@@ -178,6 +231,7 @@ products.get("/", function(req, res, next) {
             log_date: newLog.date
           });
           console.log(products);
+          console.log("count: ", count);
         });
       });
   } catch (err) {
