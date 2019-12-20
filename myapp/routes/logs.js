@@ -15,11 +15,6 @@ mongoose.connection.on("error", function(error) {
   console.log("Connection error: ", error);
 });
 
-function getLog() {
-  var query = Log.find().limit(10);
-  return query;
-}
-
 var express = require("express");
 var logs = express.Router();
 

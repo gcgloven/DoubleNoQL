@@ -20,11 +20,9 @@ mongoose.connection.on("error", function(error) {
 router.get("/", function(req, res, next) {
   try {
     var newLog = new Log({
-      //asin: asin,
       request: "Access Homepage",
       date: new Date() + "",
       status: res.statusCode
-      //HttpStatus.getStatusCode(HttpStatus.OK)
     });
     newLog.save(function(err) {
       //save done
@@ -46,11 +44,9 @@ router.get("/", function(req, res, next) {
   } catch (err) {
     res.statusCode(400).send("Bad request");
     var newLog = new Log({
-      //asin: asin,
       request: "Access Homepage",
       date: new Date() + "",
       status: res.statusCode
-      //HttpStatus.getStatusCode(HttpStatus.INTERNAL_SERVER_ERROR)
     });
     newLog.save(function(err) {
       //save done

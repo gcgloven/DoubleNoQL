@@ -29,45 +29,47 @@ var bodyParser = require("body-parser");
 products.use(bodyParser.json());
 products.use(bodyParser.urlencoded({ extended: true }));
 
+// for sorting purposes
 var sorter = [];
 var minPrice = 0;
 var maxPrice = 1000;
-var price = { $gt: minPrice, $lt: maxPrice };
 var finder = {};
 products.post("/", function(req, res) {
   var s = req.body.sortBy;
   var d = req.body.price;
   var slide = req.body.slide;
-  console.log(s);
+
+  // if there's already a sort in place, remove it
   if (sorter.length != 0) {
     sorter = [];
   }
+
+  //if slider was used
   if (slide) {
     var slider = slide.split(",");
     minPrice = slider[0];
     maxPrice = slider[1];
     sorter.push("price");
+
+    //retrieve price from slider and use it to find items within that price range
     if (minPrice == 0 && maxPrice == 0) {
-      price = 0;
+      finder = { price: 0 };
+    } else {
+      finder = { price: { $gt: minPrice, $lt: maxPrice } };
     }
-    finder = { price: { $gt: minPrice, $lt: maxPrice } };
-  }
-  if (s) {
-    sorter.push(String(s));
-    minPrice = 0;
-    maxPrice = 1000;
-    finder = {};
   }
 
-  sorter.push(String(s));
-  console.log(minPrice, maxPrice);
-  console.log("new sort");
-  console.log(sorter[0]);
+  // if dropdown menu was used
+  if (s) {
+    sorter.push(String(s));
+    finder = {};
+  }
   res.redirect("/books");
 });
 
 products.get("/:page", function(req, res, next) {
   try {
+    //initialize newLog for successful requests
     var newLog = new Log({
       //asin: asin,
       request: "View Books",
@@ -110,60 +112,12 @@ products.get("/:page", function(req, res, next) {
         });
       });
 
-    // async function getProduct(pdt) {
-    //   var product = await pdt.find().sort(sorter[0]);
-    //   return product;
-    // }
-    // var pdt = getProduct(Product);
-    // console.log(pdt);
-
-    // pdt.countDocuments({}, function(err, count) {
-    //   var bookCount = count;
-    //   console.log("book count: " + bookCount);
-    //   pdt.skip(perPage * page - perPage).limit(9);
-
-    //   res.render("books", {
-    //     books: pdt,
-    //     current: page,
-    //     pages: Math.ceil(bookCount / perPage),
-    //     query: req.query,
-    //     url: req.originalUrl,
-
-    //     log_status: newLog.status,
-    //     log_req: newLog.request,
-    //     log_date: newLog.date
-    //   });
-    // });
-
-    // res.render("books", {
-    //   books: product.products,
-    //   current: product.page,
-    //   pages: Math.ceil(bookCount / perPage),
-    //   query: req.query,
-    //   url: req.originalUrl,
-
-    //   log_status: newLog.status,
-    //   log_req: newLog.request,
-    //   log_date: newLog.date
-    // });
-
-    // res.render("books", {
-    //   books: product.products,
-    //   current: product.page,
-    //   pages: Math.ceil(count / perPage),
-    //   query: req.query,
-    //   url: req.originalUrl,
-
-    //   log_status: newLog.status,
-    //   log_req: newLog.request,
-    //   log_date: newLog.date
-    // });
     console.log(products);
   } catch (err) {
     console.log("error: ", err);
     res.statusCode(400).send("Bad request");
 
-    //initialize newLog
+    //initialize newLog for failed requests
     var newLog = new Log({
       //asin: asin,
       request: "View Books",
@@ -206,14 +160,6 @@ products.get("/", function(req, res, next) {
     });
     var perPage = 9;
     var page = req.params.page || 1;
-
-    // if (req.query.sort == "price") {
-    //   var sorter = "-price";
-    // } else {
-    //   var sorter = "asin";
-    // }
-    // const sorter1 = req.body.sortBy;
-    // console.log("sorter: " + req.body.sortBy);
 
     Product.find(finder)
       .sort(sorter[0])

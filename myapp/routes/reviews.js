@@ -30,123 +30,22 @@ var connection = require("./../db/bookReviewsDb");
 var express = require("express");
 var reviews = express.Router();
 
-/* GET home page. */
-// reviews.get("/", function(req, res, next) {
-//   connection.query("Select * from reviews limit 10", function(err, result) {
-//     if (err) {
-//       console.log("error: ", err);
-//       res.send(err);
-
-//       //post log information into mongodb database
-//       var newLog = new Log({
-//         asin: asin,
-//         request: "Book Review",
-//         date: new Date() + "",
-//         status: "fail"
-//       });
-
-//       newLog.save(function(err) {
-//         //save done
-//         if (err) {
-//           console.log(err);
-//           status: err;
-//           process.exit();
-//         }
-//         console.log("Log Saved");
-//       });
-//     } else {
-//       console.log("reviews : ", result);
-//       res.render("reviews", {
-//         title: "List of all book reviews",
-//         reviews: result
-//       });
-
-//       //post log information into mongodb database
-//       var newLog = new Log({
-//         asin: asin,
-//         request: "Book Review",
-//         date: new Date() + "",
-//         status: "success"
-//       });
-//       newLog.save(function(err) {
-//         //save done
-//         if (err) {
-//           console.log(err);
-//           status: err;
-//           process.exit();
-//         }
-//         console.log("Log Saved");
-//       });
-//     }
-//   });
-
-//   //post log information into mongodb database
-//   var newLog = new Log({
-//     asin: "Null",
-//     request: "Book Review",
-//     date: new Date() + ""
-//   });
-//   newLog.save(function(err) {
-//     //save done
-//     if (err) {
-//       console.log(err);
-//       status: err;
-//       process.exit();
-//     }
-//     console.log("Log Saved");
-//   });
-// });
-
 reviews.get("/:asin", function(req, res, next) {
-  // if (err) {
-  //   var newLog = new Log({
-  //     //asin: asin,
-  //     request: "Book Review",
-  //     date: new Date() + "",
-  //     status: res.statusCode
-  //   });
-  //   newLog.save(function(err) {
-  //     //save done
-  //     if (err) {
-  //       console.log(err);
-  //       status: err;
-  //       process.exit();
-  //     }
-  //     console.log("Log Saved");
-  //     console.log(newLog.status);
-  //   });
-  //   throw err;
-  // } else {
-
   var asin = req.params.asin;
   var q = "Select * from reviews where asin = '" + asin + "'";
+
   connection.query(q, async function(err, result) {
     try {
-      // var newLog = new Log({
-      //   //asin: asin,
-      //   request: "Book Review",
-      //   date: new Date() + "",
-      //   status: res.statusCode
-      // });
-      // newLog.save(function(err) {
-      //   //save done
-      //   if (err) {
-      //     console.log(err);
-      //     status: err;
-      //     process.exit();
-      //   }
-      //   console.log("Log Saved");
-      //   console.log(newLog.status);
-      // });
       console.log("reviews : ", result);
+
       var rating = 0;
       for (i = 0; i < result.length; i++) {
         rating += result[i].overall;
       }
-      console.log("RATING: " + Math.round(rating / result.length));
+
+      //for retrieving related books from mongo database
       let mongoResult = await getData({ asin: asin });
       let arrValues = Object.values(mongoResult);
-      console.log("result: " + arrValues[0]);
       let related = await getData({
         asin: arrValues[0].related.also_bought
       });

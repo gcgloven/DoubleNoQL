@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Shop || Witter Multipage Responsive Template</title>
+        <title>List of books</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- favicon -->
@@ -365,7 +365,10 @@
                                                                 value="asin">Asin</button></a></label>
                                                     <label><a href="/books"><button name="sortBy" id="sortBy"
                                                                 value="-price">Price</button></a></label> -->
-                                                    <select name = "sortBy" id = "sortBy" onclick="this.form.submit()">
+                                                    <select name = "sortBy" id = "sortBy" onchange="this.form.submit()">
+                                                        <option value="none" selected disabled hidden> 
+                                                            Select an option 
+                                                        </option> 
                                                         <option value="asin" id="byAsin">Asin</option>
                                                         <option value="price" id="byAscPrice">Price ↑</option>
                                                         <option value="-price" id="byDscPrice">Price ↓</option>
@@ -401,11 +404,11 @@
                                                     <li class="shop-pagination"><a>...</a></li>
                                                 <% } %>
                                             <% } %>
-                                            <% if (current == pages) { %>
+                                            <!-- <% if (current == pages) { %>
                                                 <li class="shop-highlightedpage"><a>Last</a></li>
                                             <% } else { %>
                                                 <li class="shop-pagination"><a href="/books/<%= pages %>">Last</a></li>
-                                            <% } %>
+                                            <% } %> -->
                                         <% } %>
                                        
                                     </ul>

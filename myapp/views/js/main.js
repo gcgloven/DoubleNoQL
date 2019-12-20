@@ -202,21 +202,17 @@ Blog list owl active
   /*----------------------------------
   Dropdown menu
   -----------------------------------*/
+
   $("#byAsin").on("click", function() {
-    $("#sortBy")
-      .val("asin")
-      .attr("selected", "");
+    $("#sortBy").val("asin");
   });
   $("#byAscPrice").on("click", function() {
-    $("#sortBy")
-      .val("price")
-      .attr("selected", "");
+    $("#sortBy").val("price");
   });
   $("#byDscPrice").on("click", function() {
-    $("#sortBy")
-      .val("-price")
-      .attr("selected", "");
+    $("#sortBy").val("-price");
   });
+
   /*----------------------------------
  Create an account toggle function 
  ----------------------------------*/
