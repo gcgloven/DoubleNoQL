@@ -1,0 +1,67 @@
+<html>  
+  <head>
+    <link rel="stylesheet" href="/addbookstyle.css">
+  </head>
+  <body>
+
+  <!-- Top navigation -->
+  <div class="topnav">
+
+    <!-- Centered link -->
+    <div class="topnav-centered">
+      <a class="active">Add a Book - Enter the Following Attributes of your book.</a>
+    </div>
+
+    <!-- Left-aligned links (default) -->
+    <a href="/">HOME</a>
+
+    <!-- Right-aligned links -->
+    <div class="topnav-right">
+      <a href="/books">BOOK LIST</a>
+    </div>
+
+  </div>
+  <div class = "container">
+    <form method="post">
+    <label for="addnewbook" class="questions">Enter asinID: </label>
+     <textarea class="text" cols="30" rows ="1" name="new_asin_id"></textarea>
+     <br/>
+
+     <label for="addnewbook" class="questions">Enter Book Name: </label>
+     <textarea class="text" cols="50" rows ="1" name="new_title"></textarea>
+     <br/>
+
+     <label for="addnewbook" class="questions">Enter Price of Book: </label>
+     <textarea class="text" cols="10" rows ="1" name="new_price"></textarea>
+     <br/>
+   
+     <!-- 
+    There's a problem with image upload; keep it to "textbox" for upload image first.
+
+     <label for="addnewbook">Upload Image of new book </label>
+     <input type="file" accept="image/*" name="photo" >
+     <br/> -->
+     
+     <label for="addnewbook" class="questions">Upload Image of new book: </label>
+     <textarea class="text" cols="20" rows ="1" name="photo"></textarea>
+     <br/>
+
+    
+     <label for="addnewbook" class="questions">Enter Book Summary: </label>
+     <textarea class="text" cols="60" rows ="5" name="new_description"></textarea>
+     <br/>
+
+     <label for="addnewbook" class="questions">Enter Book Category: </label>
+     <textarea class="text" cols="20" rows ="1" name="new_categories"></textarea>
+     <br/>
+     
+     <label for="addnewbook" class="questions">Enter Book Brand: </label>
+     <textarea class="text" cols="20" rows ="1" name="new_brand"></textarea>
+     <br/>
+
+    <hr></hr>
+     <input type="submit" value="Submit" class="submitButton" name="submit_name">
+    </form>  
+  </div>  
+  </body>
+  </html>

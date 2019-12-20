@@ -3,7 +3,7 @@
 /*----------------------------------------*/
 
 .questions {
-  color: darkblue;
+  color: rgb(51, 122, 183);
   font-size: 20px;
 }
 
@@ -37,8 +37,13 @@ input[type=submit]:hover {
 /* Add a background color and some padding around the form */
 .container {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: white;
   padding: 15px;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
 }
 
 .single-banner:hover .banner-bottom.text-center::before {
