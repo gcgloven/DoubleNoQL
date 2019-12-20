@@ -38,8 +38,16 @@
 		<link rel="stylesheet" href="/style.css">
 		<!-- responsive css -->
         <link rel="stylesheet" href="/css/responsive.css">
-		<!-- modernizr css -->
+        <!-- modernizr css -->
+        <link rel="stylesheet" href="/popupchat.css">
         <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
+        <script>
+        // When the user clicks on <div>, open the popup
+        function popUp() {
+        var popup = document.getElementById("chatBot");
+        popup.classList.toggle("show");
+        }
+        </script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -471,7 +479,16 @@
 		                
 		            </div>
 		        </div>
-		    </div>
+            </div>
+                
+        <div class="popup" onclick="popUp()"><button class = "open-button"><img src="https://media.discordapp.net/attachments/543292055728685056/657619356821225483/12-16-19_2-08-33_AM_2.png" style = "width: 80px; height: 80px;"></img></button>
+            <div class="chat-popup" id="chatBot">
+                <iframe height="800" width="500" src="https://bot.dialogflow.com/d08d2782-1de9-4835-9517-24f903a75bf1"></iframe>
+                <hr>
+                <button class = "hide-button">Hide</button>
+                <hr>
+        </div>
+    </div>
 		</footer>
 		<!-- Footer Area End -->
 		<!-- all js here -->
