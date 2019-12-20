@@ -224,6 +224,23 @@ reviews.post("/:asin", function(req, res) {
       res.send(err);
     } else {
       asin = req.body.asin;
+
+      var newLog = new Log({
+        //asin: asin,
+        request: "Add Review",
+        date: new Date() + "",
+        status: res.statusCode
+      });
+      newLog.save(function(err) {
+        //save done
+        if (err) {
+          console.log(err);
+          status: err;
+          process.exit();
+        }
+        console.log("Log Saved");
+        console.log(newLog.status);
+      });
       res.redirect("back");
     }
   });

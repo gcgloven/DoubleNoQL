@@ -31,7 +31,7 @@ search.post("/", function(req, res, next) {
   try {
     var newLog = new Log({
       //asin: asin,
-      request: "Search Books",
+      request: "Search Book",
       date: new Date() + "",
       status: res.statusCode
     });
@@ -78,7 +78,7 @@ search.post("/", function(req, res, next) {
     //initialize newLog
     var newLog = new Log({
       //asin: asin,
-      request: "View Books",
+      request: "Search Book",
       date: new Date() + "",
       status: res.statusCode
     });

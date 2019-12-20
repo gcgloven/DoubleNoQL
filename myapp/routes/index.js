@@ -37,7 +37,12 @@ router.get("/", function(req, res, next) {
       console.log(newLog.status);
     });
 
-    res.render("index", { title: "Express" });
+    res.render("index", {
+      title: "Express",
+      log_req: newLog.request,
+      log_date: newLog.date,
+      log_status: newLog.status
+    });
   } catch (err) {
     res.statusCode(400).send("Bad request");
     var newLog = new Log({
