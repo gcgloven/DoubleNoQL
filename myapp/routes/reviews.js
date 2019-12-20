@@ -2,7 +2,6 @@
 
 var mongo_ip = require("./mongo_ip").mongo_ip;
 
-var HttpStatus = require("http-status-codes");
 var mongoose = require("mongoose"),
   Product = require("./../models/bookModel"),
   Product = mongoose.model("Books"),
@@ -23,11 +22,6 @@ function getData(q) {
   var query = Product.find(q, " -_id", function(err) {
     if (err) throw err;
   });
-  return query;
-}
-
-function getLog() {
-  var query = Log.find().limit(5);
   return query;
 }
 
@@ -104,16 +98,98 @@ var reviews = express.Router();
 // });
 
 reviews.get("/:asin", function(req, res, next) {
+  // if (err) {
+  //   var newLog = new Log({
+  //     //asin: asin,
+  //     request: "Book Review",
+  //     date: new Date() + "",
+  //     status: res.statusCode
+  //   });
+  //   newLog.save(function(err) {
+  //     //save done
+  //     if (err) {
+  //       console.log(err);
+  //       status: err;
+  //       process.exit();
+  //     }
+  //     console.log("Log Saved");
+  //     console.log(newLog.status);
+  //   });
+  //   throw err;
+  // } else {
+
   var asin = req.params.asin;
   var q = "Select * from reviews where asin = '" + asin + "'";
-
   connection.query(q, async function(err, result) {
     try {
+      // var newLog = new Log({
+      //   //asin: asin,
+      //   request: "Book Review",
+      //   date: new Date() + "",
+      //   status: res.statusCode
+      // });
+      // newLog.save(function(err) {
+      //   //save done
+      //   if (err) {
+      //     console.log(err);
+      //     status: err;
+      //     process.exit();
+      //   }
+      //   console.log("Log Saved");
+      //   console.log(newLog.status);
+      // });
+      console.log("reviews : ", result);
+      var rating = 0;
+      for (i = 0; i < result.length; i++) {
+        rating += result[i].overall;
+      }
+      console.log("RATING: " + Math.round(rating / result.length));
+      let mongoResult = await getData({ asin: asin });
+      let arrValues = Object.values(mongoResult);
+      console.log("result: " + arrValues[0]);
+      let related = await getData({
+        asin: arrValues[0].related.also_bought
+      });
+      let relValues = Object.values(related);
+
+      if (typeof result !== "undefined") {
+        var newLog = new Log({
+          //asin: asin,
+          request: "Book Review",
+          date: new Date() + "",
+          status: res.statusCode
+        });
+        newLog.save(function(err) {
+          //save done
+          if (err) {
+            console.log(err);
+            status: err;
+            process.exit();
+          }
+          console.log("Log Saved");
+          console.log(newLog.status);
+        });
+      }
+      params = {
+        mongo: arrValues[0],
+        reviews: result,
+        rating_stars: Math.round(rating / result.length),
+        rating: rating / result.length,
+        rel: relValues,
+        asin: asin,
+        log_status: newLog.status,
+        log_req: newLog.request,
+        log_date: newLog.date
+      };
+      res.render("reviews", params);
+    } catch (err) {
+      console.log(err);
+      res.status(400).send("Bad request");
       var newLog = new Log({
         //asin: asin,
         request: "Book Review",
         date: new Date() + "",
-        status: HttpStatus.getStatusText(HttpStatus.OK)
+        status: res.statusCode
       });
       newLog.save(function(err) {
         //save done
@@ -126,58 +202,7 @@ reviews.get("/:asin", function(req, res, next) {
         console.log(newLog.status);
       });
 
-      console.log("reviews : ", result);
-      var rating = 0;
-      for (i = 0; i < result.length; i++) {
-        rating += result[i].overall;
-      }
-      console.log("RATING: " + Math.round(rating / result.length));
-      let mongoResult = await getData({ asin: asin });
-      let logResult = await getLog();
-      let arrValues = Object.values(mongoResult);
-      console.log("result: " + arrValues[0]);
-      let related = await getData({
-        asin: arrValues[0].related.also_bought
-      });
-      let relValues = Object.values(related);
-      params = {
-        mongo: arrValues[0],
-        reviews: result,
-        rating_stars: Math.round(rating / result.length),
-        rating: rating / result.length,
-        rel: relValues,
-        asin: asin,
-        log_status: newLog.status,
-        log_req: newLog.request,
-        log_date: newLog.date,
-        log_saved: "Log saved"
-      };
-      res.render("reviews", params);
-    } catch (err) {
-      console.log("error: ", err);
-      res.send(err);
-
-      //initialize newLog
-      var newLog = new Log({
-        //asin: asin,
-        request: "Book Review",
-        date: new Date() + "",
-        status: HttpStatus.getStatusText(HttpStatus.INTERNAL_SERVER_ERROR)
-      });
-
-      //post log information into mongodb database
-      newLog.save(function(err) {
-        //save done
-        if (err) {
-          console.log(err);
-          newLog.status = err;
-          process.exit();
-        }
-        console.log("Log Saved");
-        console.log(newLog);
-      });
-
-      //post log information into mongodb database
+      throw err;
     }
   });
 });
