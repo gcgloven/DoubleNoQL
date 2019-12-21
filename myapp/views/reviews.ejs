@@ -382,8 +382,21 @@
                                     <% reviews.forEach(function (r) { %>
                                        <tr>
                                            <td><%= r.reviewer_name %></td>
-                                           <td><%= r.overall %></td>
+                                           <td><!--<%= r.overall %>-->
+                                            <div class="list-pro-rating">                                
+                                             <%if (r.overall) {  %>
+                                             <% for(var i=0; i < r.overall; i++) { %>
+                                                 <i class="fa fa-star icolor"></i>
+                                             <% } %>
+                                             <% for(var i=0; i < 5-r.overall; i++) { %>
+                                                 <i class="fa fa-star"></i>
+                                             <% } %>
+                                                 <h4><%= r.overall.toFixed(2) %></h4>
+                                             <% } %></td>
                                            <td><%= r.summary %></td>
+                                            </div>
+                                        
+                                        </td>
                                            <td><%= r.review_text %></td>
                                        </tr>
                                     <% }) %>
