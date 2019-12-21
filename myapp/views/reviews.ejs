@@ -327,9 +327,9 @@
                             <div id="product-comments-block-extra">
 								<ul class="comments-advices">                                        
                                     <form action="/reviews/<%= asin %>" method="POST">
-                                        <label for="username">Username: </label>
+                                        <label for="username" style="margin-right: 5px;">Username: </label>
                                         <input name="username" type="text" id="username" ><br>
-                                        <label for="userID">UserID: </label>
+                                        <label for="userID" style="margin-right: 10px;">UserID: </label>
                                         <input name="userID" type="text" id="username" style="margin-left: 24px;"><br>
                                         <input name="bookasin" type="text" id="bookasin" readonly hidden value=<%= asin %> >
                                         <label for="summary">Summary: </label><br>
@@ -373,6 +373,7 @@
                                     <thead>
                                         <tr>
                                             <th>Reviewer</th>
+                                            <th>Rating</th>
                                             <th>Review Summary</th>
                                             <th>Review</th>
                                         </tr>
@@ -381,6 +382,7 @@
                                     <% reviews.forEach(function (r) { %>
                                        <tr>
                                            <td><%= r.reviewer_name %></td>
+                                           <td><%= r.overall %></td>
                                            <td><%= r.summary %></td>
                                            <td><%= r.review_text %></td>
                                        </tr>
